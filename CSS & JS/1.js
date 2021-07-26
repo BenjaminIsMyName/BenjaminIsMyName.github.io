@@ -58,7 +58,7 @@ function fadeUp() {
 }
 
 // Experimental feature to see of it help
-screen.orientation.addEventListener('change', focusss(cuurentArticle+1))
+screen.orientation.addEventListener('change', update)
 // Experimental feature to see of it help
 
 function update() {

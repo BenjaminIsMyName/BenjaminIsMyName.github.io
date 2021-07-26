@@ -87,6 +87,8 @@ function changeSelected() {
 
 // used by "onclick" in the HTML, when clicking an option:
 function focusss(num) {
+  if (!(window.innerWidth > 1300 && window.innerHeight > 550))
+      showMenu()
   // crate quick effect on clicked option:
   document.querySelectorAll(".options")[--num].classList.add("focu");
   window.setTimeout(

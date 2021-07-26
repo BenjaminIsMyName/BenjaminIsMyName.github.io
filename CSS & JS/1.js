@@ -57,10 +57,6 @@ function fadeUp() {
   update();
 }
 
-// Experimental feature to see of it help
-screen.orientation.addEventListener('change', update)
-// Experimental feature to see of it help
-
 function update() {
   let articles = document.querySelectorAll("." + currentPMglobal);
   // remove the "currentArticle" class from the previews article (if exist):

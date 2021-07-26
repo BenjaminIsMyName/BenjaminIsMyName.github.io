@@ -1,0 +1,585 @@
+html,
+body {
+  scroll-behavior: smooth;
+  /* cancel for now (defualt is better): */
+  /* scrollbar for firefox  */
+  /* scrollbar-color: var(--scrollbar-color-firefox); */
+  scrollbar-width: thin;
+}
+
+body {
+  background-color: var(--background-color);
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --background-color: #cbdcff;
+  --aside-color: #d8d9f7;
+  /* for some reason the --selected-option-background-color takes time to change to the dark one on reload: */
+  --selected-option-background-color: #f2f2ff;
+  --selected-option-text-color: rgba(0, 0, 255, 0.527);
+  --options-text-color: rgba(0, 0, 0, 0.5);
+  --hover-options-color: #f2f2ff75;
+  --focus-color: darkblue;
+  --text-color: black;
+  --selection-color: #babcf8;
+  /* cancel for now (defualt is better): */
+  /* --scrollbar-color-firefox: #345088 gray; */
+  --handle-scrollbar-color: #8ab0fc;
+  --track-scrollbar-color: white;
+  --scrollbar-hover-color: #5086f1;
+  --current-article-color: rgba(255, 255, 255, 0.5);
+  --current-article-backdrop-filter: blur(5px);
+  --theme-color: black;
+  --theme-focus-color: rgba(0, 0, 0, 0.5);
+  --options-image-filter: grayscale(100%) opacity(50%);
+  --seleted-option-img-filter: none;
+  --clicked-option: rgb(162, 184, 243);
+  --menu-clicked-button: var(--background-color);
+  --button-menu-text-color-hover: blue;
+  --button-menu-text-color-focus: darkblue;
+  --menu-button-when-open-shadow: rgba(0, 0, 255, 0.5);
+  --pm-name-linear-color: linear-gradient(to top right, darkred, blue);
+  --exit-cards-screen-background-color-button: var(--options-color);
+  --exit-cards-screen-button-shadow: black;
+  --cards-container-shadow: rgba(0, 0, 0, 0.5);
+  --benjam-span-color: darkblue;
+}
+.dark {
+  --background-color: #000013;
+  --aside-color: #0c0d2e;
+  --selected-option-background-color: #0c1a36;
+  --selected-option-text-color: #4c4cb2;
+  --options-text-color: rgba(245, 245, 245, 0.5);
+  --hover-options-color: #0c0c0c75;
+  --focus-color: darkblue;
+  --text-color: whitesmoke;
+  --selection-color: #393983;
+  /* doesn't change: */
+  /* --scrollbar-color-firefox: green red; */
+  --handle-scrollbar-color: #8ab0fc;
+  --track-scrollbar-color: black;
+  --scrollbar-hover-color: #5086f1;
+  --current-article-color: #05112988;
+  --current-article-backdrop-filter: blur(15px);
+  --theme-color: rgb(198, 217, 243);
+  --theme-focus-color: yellow;
+  --options-image-filter: grayscale(100%) invert(1) opacity(50%);
+  --seleted-option-img-filter: invert(30%);
+  --clicked-option: rgb(9, 0, 63);
+  --menu-clicked-button: var(--background-color);
+  --button-menu-text-color-hover: #4c4cb2;
+  --button-menu-text-color-focus: lightblue;
+  --menu-button-when-open-shadow: rgba(0, 0, 255, 0.3);
+  --pm-name-linear-color: linear-gradient(to top right, red, blue);
+  --exit-cards-screen-background-color-button: var(--options-color);
+  --exit-cards-screen-button-shadow: lightblue;
+  --cards-container-shadow: black;
+  --benjam-span-color: lightblue;
+}
+
+/* this class will be added via JS to the cuurent article: */
+.currentArticle {
+  background-color: var(--current-article-color);
+  backdrop-filter: var(--current-article-backdrop-filter);
+}
+
+aside {
+  background-color: var(--aside-color);
+  height: 100vh;
+  width: 17%;
+  /* box-shadow: var(--aside-shadow); */
+  position: fixed;
+  user-select: none;
+  /* z-index: 100; */
+  animation: show 1s ease-out 1;
+}
+@keyframes show {
+  from {
+    opacity: 0;
+    margin-right: -20%;
+  }
+  to {
+    margin-right: 0;
+    opacity: 1;
+  }
+}
+/* pm-image: */
+aside .top-image {
+  /* image of the prime minister (and fall-back color): */
+
+  /* fill the div with the image: */
+  height: 130px;
+  width: 130px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* make the image/div circle: */
+  border-radius: 50%;
+  /* center the image: */
+  margin: auto;
+  /* not from the top: */
+  margin-top: 50px;
+  /* border: 1px solid darkblue; */
+  transition: all 0.5s linear;
+  cursor: pointer;
+}
+aside .top-image:hover {
+  border-radius: 10px;
+  /* transform: translateY(-4%) scale(1.1); */
+}
+aside .pm-name {
+  /* create some space between the photo and the text: */
+  margin-top: 10px;
+
+  /* center the text in the center: */
+  text-align: center;
+
+  /* linear color in text: */
+  background: var(--pm-name-linear-color);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+  font-size: 30px;
+  font-family: "Miriam Libre", sans-serif;
+  /* text-shadow: 1px 1px rgb(248, 253, 255); */
+  /* display: block; */
+}
+
+/* the first option: */
+.options:first-of-type {
+  margin-top: 50px;
+}
+#selected {
+  background-color: var(--selected-option-background-color);
+  color: var(--selected-option-text-color);
+}
+
+#selected img {
+  filter: var(--seleted-option-img-filter) !important;
+}
+
+.options {
+  position: relative;
+  /* border-radius: 0px 30px 30px 0px; */
+  margin: 5px auto;
+  color: var(--options-text-color);
+  font-size: 1.3rem;
+  padding: 13px 20px 13px;
+  display: flex;
+  align-items: center; /* make the elements inside vertically center */
+  transition: all 0.2s ease; /* problem: make the selected option change background color to dark on reload slowly */
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+.options img {
+  filter: var(--options-image-filter);
+}
+
+.options span {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  /* make the link on top of everything (the image etc): */
+  z-index: 1;
+
+  /* make the invisibale link in the same shape as the options */
+  /* border-radius: 0px 30px 30px 0px; */
+}
+
+.options img {
+  width: 35px;
+  height: 35px;
+  margin-left: 20px;
+}
+.options:hover {
+  background-color: var(--hover-options-color);
+}
+
+.options:focus-visible {
+  outline: thick outset var(--focus-color);
+}
+.half-circle {
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 45vw;
+  margin-top: -10vh;
+  height: 120vh;
+  position: fixed;
+  background-color: var(--selected-option-background-color);
+  /* background: linear-gradient(to right, var(--main-color) 20%, white); */
+  border-radius: 50% 00% 00% 50%;
+  animation: half-circle 8s ease-in-out 2s infinite alternate;
+}
+@keyframes half-circle {
+  0% {
+    transform: scaleX(1) scaleY(1) rotate(0);
+  }
+  50% {
+    transform: scaleX(1.3) scaleY(1.5) rotate(10deg);
+  }
+  100% {
+    transform: scaleX(1.8) scaleY(2) rotate(40deg);
+  }
+}
+
+#fillTheRest {
+  float: left;
+  width: 83%;
+  transition: width 0.2s ease-out;
+}
+
+.first {
+  margin-top: 110px;
+}
+.last {
+  margin-bottom: 110px;
+}
+article {
+  width: 80%;
+  margin: 20px auto;
+  font-size: 1.2rem;
+  color: var(--text-color);
+  padding: 70px;
+  font-family: Arial, Helvetica, sans-serif;
+  display: none;
+  transition: all 0.2s ease;
+}
+
+/* for both of the images in the first article: */
+.bennet:first-of-type img {
+  padding: 25px;
+  width: 50%;
+  transition: all 0.6s ease-in;
+  filter: grayscale(100%);
+  cursor: zoom-in;
+}
+/* for both of the images in the first article: */
+.bennet:first-of-type img:hover {
+  transform: scale(1.05);
+  filter: none;
+  /* cursor: pointer; */
+}
+/* for the image in the last article: */
+.bennet:nth-of-type(4) img {
+  width: 100%;
+}
+.benjam img {
+  width: 100%;
+}
+.benjam span {
+  font-weight: bold;
+  color: var(--benjam-span-color);
+}
+
+.benjam ul {
+  margin: 10px 30px 10px 10px;
+}
+
+/* when selecting text etc: */
+::selection {
+  background: var(--selection-color);
+}
+
+::-webkit-scrollbar {
+  /* used to be 10px but I liked auto better */
+  width: auto;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--track-scrollbar-color);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--handle-scrollbar-color);
+  border-radius: 30px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-hover-color);
+}
+
+.cards-screen {
+  position: absolute;
+  background: var(--current-article-color);
+  height: 100vh;
+  width: 100%;
+  z-index: 15;
+  backdrop-filter: blur(15px);
+  position: fixed;
+  display: none;
+  transition: all 0.2s ease;
+  opacity: 0;
+}
+.top-image:focus-visible {
+  outline: thick outset var(--focus-color);
+  border-radius: 0;
+}
+button:focus-visible {
+  outline: thick outset var(--focus-color);
+}
+input:focus-visible {
+  outline: thick outset var(--focus-color);
+}
+/* bennet: */
+.bennet-name:after {
+  content: "נפתלי בנט";
+}
+.bennet-photo {
+  background-image: url("../Media/bennett.jpg"),
+    linear-gradient(
+      to bottom right,
+      rgb(255, 79, 79) 40%,
+      rgb(114, 114, 255) 130%
+    );
+}
+.bennet {
+  display: block;
+}
+/* benjam: */
+.benjam-name:after {
+  content: "בנימין נתניהו";
+}
+.benjam-photo {
+  background-image: url("../Media/benjamin.jpg"),
+    linear-gradient(
+      to bottom right,
+      rgb(255, 79, 79) 40%,
+      rgb(114, 114, 255) 130%
+    );
+}
+/* olmert: */
+.olmert-name:after {
+  content: "אהוד אולמרט";
+}
+.olmert-photo {
+  background-image: url("../Media/olmert.jpg"),
+    linear-gradient(
+      to bottom right,
+      rgb(255, 79, 79) 40%,
+      rgb(114, 114, 255) 130%
+    );
+}
+.olmert {
+  margin-top: 0;
+  margin-bottom: 0;
+  height: 100vh;
+  text-align: center;
+  font-size: 50px;
+  user-select: none;
+  background: var(--pm-name-linear-color);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+  font-family: "Miriam Libre", sans-serif;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: none;
+  backdrop-filter: none !important;
+}
+.cards-screen-open {
+  display: block;
+  animation: opacityy 0.2s linear 1;
+  opacity: 1;
+}
+@keyframes opacityy {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.exit {
+  position: absolute;
+  color: var(--text-color);
+  background-color: var(--exit-cards-screen-background-color-button);
+  margin: 20px;
+  cursor: pointer;
+  width: 10px;
+  height: 10px;
+  padding: 30px;
+  text-align: center;
+  border-radius: 50%;
+  font-size: 30px;
+  font-weight: bold;
+  box-shadow: 0 0 4px var(--exit-cards-screen-button-shadow);
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  z-index: 30;
+  user-select: none;
+}
+.cards-outside-container {
+  position: relative;
+  height: 100vh;
+}
+.cards-container {
+  position: absolute;
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 10px 2px var(--cards-container-shadow);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  place-items: center;
+  grid-column-gap: 30px;
+}
+.card {
+  cursor: pointer;
+  width: 200px;
+  height: 200px;
+  background-color: black;
+  box-shadow: 2px 2px 3px 2px var(--cards-container-shadow);
+  transition: all 0.2s linear;
+  user-select: none;
+}
+.card:hover {
+  transform: translateY(3px);
+  /* border-radius: 50%; */
+}
+.focu {
+  animation: clicked 0.5s ease 1;
+}
+
+@keyframes clicked {
+  from {
+    background-color: var(--clicked-option);
+  }
+  to {
+    background-color: none;
+  }
+}
+
+button {
+  background-color: var(--aside-color);
+  border: none;
+  color: var(--text-color);
+  font-weight: bold;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 10px;
+  cursor: pointer;
+  position: fixed;
+  display: none;
+  transition: all 0.1s linear;
+  z-index: 7;
+  user-select: none;
+}
+button:hover {
+  transform: translate(-2px, 2px);
+  box-shadow: -2px 2px 5px var(--menu-button-when-open-shadow);
+  color: var(--button-menu-text-color-hover);
+}
+.focusButton {
+  transform: translate(-2px, 2px);
+  box-shadow: -2px 2px 5px var(--menu-button-when-open-shadow);
+  color: var(--button-menu-text-color-focus);
+  background-color: var(--menu-clicked-button);
+  border-radius: 50px;
+}
+/* on small screens (smaller or equals to 1300 width OR smaller or equals to 550 height: */
+@media (max-width: 1300px), (max-height: 550px) {
+  aside {
+    display: none;
+    z-index: 10;
+    /* for firefox: */
+    width: -moz-fit-content;
+    /* for other browsers: */
+    width: fit-content;
+    top: 80px;
+    right: 10px;
+    /* for firefox: */
+    height: -moz-fit-content;
+    /* for other browsers: */
+    height: fit-content;
+    box-shadow: -2px 2px 5px var(--menu-button-when-open-shadow);
+  }
+  aside .options:first-of-type {
+    margin-top: 5px;
+  }
+  aside header {
+    display: none;
+  }
+  #fillTheRest {
+    width: 100%;
+  }
+  button {
+    display: inline-block;
+  }
+}
+
+.theme {
+  position: relative;
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  user-select: none;
+  border-radius: 50px;
+  background-color: var(--theme-color);
+  width: 60px;
+  padding: 5px;
+  outline: none;
+  transition: all 0.5s ease-out;
+  cursor: pointer;
+  z-index: 50;
+}
+/* focus-visible means: only on keyboard focus, not on mouse click */
+.theme:focus-visible,
+.theme:hover {
+  /* box-shadow: 0 0 4px 3px var(--theme-focus-color); */
+  transform: scale(1.2) translateX(15%) translateY(-20%);
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.ball {
+  position: absolute;
+  transform: translateY(-50%);
+  background-color: var(--background-color);
+  height: 23px;
+  width: 23px;
+  top: 50%;
+  left: 4px;
+  border-radius: 50%;
+  transition: all 0.2s linear;
+}
+.night {
+  transform: translateY(-50%) translateX(29px);
+}
+
+/* for firefox, that doesn't suppert backdrop-filter, use hard background color: */
+@supports not (backdrop-filter: none) {
+  .cards-screen {
+    background-color: var(--background-color);
+  }
+}
+
+.articles-down {
+  transform: translateY(100px);
+  opacity: 0;
+}
+.aticles-up {
+  transform: translateY(-100px);
+  opacity: 0;
+}

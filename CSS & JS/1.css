@@ -8,6 +8,7 @@ body {
   background-color: var(--background-color);
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  height: 100vh;
 }
 * {
   box-sizing: border-box;
@@ -20,11 +21,72 @@ body {
   --name-text-color: wheat;
 }
 .name {
-  font-size: 1.5rem;
-  color: var(--name-text-color);
-  text-align: center;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  height: 100%;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  font-weight: lighter;
+}
+.welcome-message {
+  text-align: center;
+  animation: fadeIn 5s ease-in-out 1;
+  font-size: 4rem;
+  color: var(--name-text-color);
+  text-shadow: 1px 1px 10px black;
+  padding: 8%;
+}
+
+@keyframes fadeIn {
+  from {
+    transform: scale(0.3);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.span-name {
+  font-weight: bolder;
+  border-bottom: 3px dashed rgb(148, 255, 126);
+  padding-bottom: 3px;
+  font-size: 1.3em;
+  color: rgb(148, 255, 126);
+  /* font-style: italic; */
+  /* font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif; */
+  /* font-family: "Zen Tokyo Zoo", cursive; */
+  /* font-family: "Otomanopee One", sans-serif; */
+  /* font-family: "Marcellus SC", serif; */
+  /* font-family: "Satisfy", cursive; */
+  /* font-family: "Fredoka One", cursive; */
+  font-family: "Merienda", cursive;
+}
+.name a {
+  color: inherit;
+  text-decoration: none;
+}
+.float {
+  z-index: -1;
+  border-radius: 50% 0 0 50%;
+  position: absolute;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 15%;
+  height: 200vh;
+  background-color: darkslategray;
+  animation: floatIn 5s ease-in-out infinite alternate;
+}
+@keyframes floatIn {
+  0% {
+    width: 15%;
+    border-radius: 10% 0 0 10%;
+  }
+  70% {
+    width: 75%;
+    border-radius: 30% 0 0 30%;
+  }
+  90% {
+    border-radius: 50% 0 0 0;
+  }
 }

@@ -87,17 +87,17 @@ function changeSelected() {
 
 // used by "onclick" in the HTML, when clicking an option:
 function focusss(num) {
-  if (!(window.innerWidth > 1300 && window.innerHeight > 550)) showMenu();
+  if (!(innerWidth > 1300 && innerHeight > 550)) showMenu();
   // crate quick effect on clicked option:
   document.querySelectorAll(".options")[--num].classList.add("focu");
-  window.setTimeout(
+  setTimeout(
     () => document.querySelectorAll(".options")[num].classList.remove("focu"),
     500
   );
   if (currentPMglobal == "olmert") return;
   // scroll to the article:
   let article = document.querySelectorAll("." + currentPMglobal)[num];
-  window.scrollTo(0, article.offsetTop - 25);
+  scrollTo(0, article.offsetTop - 25);
 }
 // show/hide menu (small screens) button, used by "onclick":
 function showMenu() {
@@ -115,11 +115,11 @@ function showMenu() {
 }
 
 // check if window size is changing
-window.addEventListener("resize", reportWindowSize);
+addEventListener("resize", reportWindowSize);
 
 function reportWindowSize() {
   // if it got resize to a big screen, show the old big menu again (even if we hide it before from the small menu button!):
-  if (window.innerWidth > 1300 && window.innerHeight > 550)
+  if (innerWidth > 1300 && innerHeight > 550)
     document.querySelector("aside").style.display = "block";
   else if (document.querySelector("button").innerHTML == "תפריט") {
     // if it got resize to a small screen again, make sure to hide the big menu we opened ^^^^ in the previews line:
@@ -139,16 +139,13 @@ function theme() {
 }
 
 // check if the prefers-color-scheme is dark. if so, call the "theme" function to change the theme
-if (
-  window.matchMedia &&
-  window.matchMedia("(prefers-color-scheme: dark)").matches
-)
-  theme();
+if (matchMedia && matchMedia("(prefers-color-scheme: dark)").matches) theme();
 
 // event listener to update the prefers-color-scheme changes:
-window
-  .matchMedia("(prefers-color-scheme: dark)")
-  .addEventListener("change", checkIfNeedsUpdate);
+matchMedia("(prefers-color-scheme: dark)").addEventListener(
+  "change",
+  checkIfNeedsUpdate
+);
 // if event listener from ^^^ found a change to the prefers-color-scheme, check if the current mode is different
 function checkIfNeedsUpdate(e) {
   // if the new prefers-color-scheme is dark and the website is also already dark, do nothing

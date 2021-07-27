@@ -526,7 +526,7 @@ button:hover {
     display: inline-block;
   }
 }
-
+/* idc about height. when WIDTH is under 550px do this: */
 @media (max-width: 550px) {
   article {
     width: 100%;

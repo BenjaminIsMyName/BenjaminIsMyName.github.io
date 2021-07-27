@@ -87,8 +87,7 @@ function changeSelected() {
 
 // used by "onclick" in the HTML, when clicking an option:
 function focusss(num) {
-  if (!(window.innerWidth > 1300 && window.innerHeight > 550))
-      showMenu()
+  if (!(window.innerWidth > 1300 && window.innerHeight > 550)) showMenu();
   // crate quick effect on clicked option:
   document.querySelectorAll(".options")[--num].classList.add("focu");
   window.setTimeout(
@@ -126,6 +125,8 @@ function reportWindowSize() {
     // if it got resize to a small screen again, make sure to hide the big menu we opened ^^^^ in the previews line:
     document.querySelector("aside").style.display = "none";
   }
+  // after the resize was made, update everything (find top article etc)
+  setTimeout(fadeUp, 50);
 }
 
 // toggle dark and light theme (called by onclick):

@@ -21,7 +21,7 @@ body {
   --name-text-color: wheat;
 }
 .name {
-  position: absolute;
+  /* position: absolute; */
   height: 100%;
   width: 100%;
   display: grid;
@@ -34,7 +34,7 @@ body {
   font-size: 4rem;
   color: var(--name-text-color);
   text-shadow: 1px 1px 10px black;
-  padding: 8%;
+  padding: 13%;
 }
 
 @keyframes fadeIn {
@@ -78,6 +78,7 @@ body {
   transform: translate(-50%, -50%) rotate(30deg) scaleY(2);
   box-shadow: 2px 2px 10px green;
   animation: floatIn 5s ease-in-out infinite alternate;
+  transition: all 1s linear;
 }
 @keyframes floatIn {
   0% {
@@ -91,8 +92,9 @@ body {
   }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 550px), (max-height: 365px) {
   .welcome-message {
     font-size: 1.3rem;
+    padding: 13%;
   }
 }

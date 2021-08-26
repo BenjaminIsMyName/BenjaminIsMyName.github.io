@@ -103,10 +103,6 @@ body {
 .second {
   height: 100vh;
   background-color: blanchedalmond;
-  display: grid;
-  align-content: center;
-  justify-content: center;
-  justify-items: center;
 }
 div.who {
   font-size: 3rem;
@@ -122,4 +118,14 @@ p.who {
   background: linear-gradient(rgb(1, 104, 44), rgb(0, 139, 116));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+.second > .container {
+  text-align: center;
+  margin: auto;
+  height: 100vh;
+  display: grid;
+  align-content: center;
+  /* justify-content: center; */
+  /* justify-items: center; */
+  max-width: 80%;
 }

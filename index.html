@@ -4,39 +4,198 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="My Portfolio.">
     <title>Benjamin</title>
-    <link rel="stylesheet" href="CSS & JS/1.css" />
-    <!-- google front: -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Merienda:wght@700&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="stylesheet" href="./index.css" />
+    <link rel="stylesheet" href="./Highlight/styles/gradient-dark.min.css" />
   </head>
   <body>
-    <div class="float"></div>
-    <div class="name">
-      <span class="welcome-message"
-        >Hey, I'm
-        <span class="span-name">
-          <!-- <a href="https://github.com/BenjaminIsMyName" target="_blank"> -->
-          Benjamin
-          <!-- </a>-->
- 
-    </div>
-    <div class="contact">
-      <a href="https://t.me/MyUsernameIsRECURSION" target="_blank">
-        Let's Talk</a
-      >
-      <div class="second">
-        <div class="container">
-        <div class="who">Who am I?</div>
-        <p class="who">I'm a programmer and work with Java, Python, JS, CSS, React and others.</p>
-        <p class="who">I like <span class="gradient">beautiful UI</span> and love perfect UX.</p>
+    <div class="first">
+      <div class="float">
+        <span class="welcome-text"
+          >Hey, I'm <span class="name">Benjamin</span></span
+        >
       </div>
     </div>
+    <div class="second">
+      <a href="https://t.me/MyUsernameIsRECURSION" target="_blank" rel="noreferrer" class="contact">
+        <div class="img"></div>
+          <span>Let's Talk</span>
+      </a>
+      <div class="work">
+        <h1>Things I did....</h1>
+        <section>
+          <h2>Java</h2>
+          <article>
+            <details>
+              <summary>Get to a number by adding following numbers</summary>
+              <p>
+                <pre><code class="language-java">
+public static void findAllInRange(int min, int max) {
+  int counter = 0;
+  while (min &lt; max) {
+    if (!checkOne(min)) {
+      System.out.println("Couldn't find any for "+min+"!");
+      counter++;
+    }
+    min++;
+  }
+  System.out.println("\nAmount of numbers we couldn't find: "+counter);
+}
+
+public static boolean checkOne(int num) {
+  boolean foundWay = false; 
+  for (int i=0; i &lt; num; i++) {
+    if (putTogether(i, num))
+      foundWay = true; 
+  }
+  return foundWay;
+}
+
+public static boolean putTogether(int from, int numToFind) { 
+  int sum = from+(from+1); 
+  for (int i=from+2; sum&lt;=numToFind; sum+=i++) 
+    if (sum == numToFind) {
+      System.out.println("found "+numToFind+": "+from+" &gt;&gt;&gt; "+i);
+      return true;
+    }	
+  return false;
+}
+                  </code></pre>
+              </p>
+            </details>
+            <details>
+              <summary>Sum all digits of an integer using recursion</summary>
+              <p>
+                 <pre><code class="language-java">
+public static int sum(int num) {
+  if (num &lt; 10)
+      return num;
+  return sum(num/10)+num%10;
+}
+                  </code></pre>
+              </p>
+            </details>
+            <details>
+              <summary>Check if an integer's digits are even-odd or odd-even alternately</summary>
+              <p>
+                <pre><code class="language-java">
+public static boolean evenOddEvenOdd(int num) {
+  while (num &gt; 9) 
+    if (num%2 == (num/=10)%2)
+      return false;
+  return true;
+}
+                  </code></pre>
+              </p>
+            </details>
+            <details>
+              <summary>Title about the thing I did</summary>
+              <p>Ok, so here is what I did, and here's the code:</p>
+            </details>
+          </article>
+        </section>
+        <section>
+          <h2>Python</h2>
+          <article>
+            <details>
+              <summary>Check validity of Israeli IDs</summary>
+              <p>   
+                <pre><code class="language-python">
+def check_id_number(id_number):
+  if not id_number.isdigit() or len(id_number) &gt; 9:
+    return False
+  sum = 0
+  for index, digit in enumerate(id_number):
+    if index % 2 == 0:
+      sum += int(digit)
+    else:
+      sum += (int(digit) * 2) % 10 + int(digit) * 2 // 10
+  return sum % 10 == 0
+                </code></pre>
+            </p>
+            </details>
+            <details>
+              <summary>Title about the thing I did</summary>
+              <p>Ok, so here is what I did, and here's the code:</p>
+            </details>
+            <details>
+              <summary>Title about the thing I did</summary>
+              <p>Ok, so here is what I did, and here's the code:</p>
+            </details>
+            <details>
+              <summary>Title about the thing I did</summary>
+              <p>Ok, so here is what I did, and here's the code:</p>
+            </details>
+          </article>
+        </section>
+        <section>
+          <h2>Web</h2>
+          <article>
+            <details>
+              <summary>Convert Celsius to Fahrenheit and vice versa</summary>
+              <p>   
+                <a href="https://benjaminismyname.github.io/Celsius/" target="_blank" rel="noreferrer">VIEW SITE</a>
+            </p>
+            </details>
+            <details>
+              <summary>Title about the thing I did</summary>
+              <p>Ok, so here is what I did, and here's the code:</p>
+            </details>
+            <details>
+              <summary>Title about the thing I did</summary>
+              <p>Ok, so here is what I did, and here's the code:</p>
+            </details>
+            <details>
+              <summary>Title about the thing I did</summary>
+              <p>Ok, so here is what I did, and here's the code:</p>
+            </details>
+          </article>
+        </section>
+      </div>
+      <div class="third">
+          <div class="about">
+            <h1>A little bit about me...</h1>
+            <br/>
+            <p>I'm a 20 years old student of Software Engineering, at the Israeli 'Atid' college. </p>
+            <p>I successfully graduated pre-engineering course at 'The College of Management Academic Studies'. </p>
+            <p>I like <span class="gradient-text">beautiful UI</span> and love perfect UX.</p>
+            <br/>
+            <h2>Hobbies</h2>
+            <p>Ping pong</p>
+            <p>Chess</p>
+            <p>Movies & TV series</p>
+            <br/>
+            <h2>Skills</h2>
+            <p>Fast typing</p>
+            <p>Pretty-good English</p>
+            <p>Fast learner and creative</p>
+
+            <br/>
+            <h2>Languages</h2>
+            <p>Java</p>
+            <p>Python</p>
+            <p>JS</p>
+            <p>CSS</p>
+            <p>HTML</p>
+            <p>React</p>
+          </div>
+      </div>
+      <!-- themes: -->
+      <div class="theme-container">
+        <button class="theme" id="default" onclick="changeTheme('')" aria-label="Default theme"/>
+        <button class="theme" id="teal" onclick="changeTheme('teal')" aria-label="Teal theme"/>
+        <button class="theme" id="blue" onclick="changeTheme('blue')" aria-label="Blue theme"/>
+        <button class="theme" id="orange" onclick="changeTheme('orange')" aria-label="Orange theme"/>
+      </div>
     </div>
+
   </body>
-  <footer><script src="CSS & JS/1.js"></script></footer>
+  <footer>
+    <script src="./index.js"></script>
+    <script src="./Highlight/highlight.min.js"></script>
+    <script>
+      hljs.highlightAll();
+    </script>
+  </footer>
 </html>

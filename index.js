@@ -13,5 +13,4 @@ function setThemeButton(theClass) {
     .classList.add("selected-theme");
 }
 
-// change it later to set the right button, as in the localStorage (if exist)
 setThemeButton("");

@@ -5,7 +5,6 @@ body {
 }
 
 body {
-  min-height: 100vh;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -17,30 +16,25 @@ body {
 }
 
 :root {
-  /* green: */
-  --one-color: #6dcf66; /* light green */
-  --two-color: #48a541; /* darker green */
+  --one-color: #6dcf66;
+  --two-color: #48a541;
 
-  /* dark gray */
-  --three-color: #2b2b2b; /* lighter gray */
-  --four-color: #232323; /* darker gray */
-  --five-color: #141414; /* darkest gray */
+  --three-color: #2b2b2b;
+  --four-color: #232323;
+  --five-color: #141414;
 
-  /* white */
-  --six-color: whitesmoke; /* less white */
-  /* --seven-color: white;  */
+  --six-color: whitesmoke;
 
-  /* green-white */
-  --eight-color: #8cff84; /* change it later? */
-  --nine-color: #8cff84; /* change it later? */
+  --seven-color: #8cff84;
+  --eight-color: #8cff84;
 
   /* other: */
   --float-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-  --gradient-text: linear-gradient(45deg, var(--one-color), var(--eight-color));
+  --gradient-text: linear-gradient(45deg, var(--one-color), var(--seven-color));
   --underline-effect: linear-gradient(
     90deg,
     var(--one-color),
-    var(--eight-color)
+    var(--seven-color)
   );
   --gradient-text-shadow: 2px 2px 10px black;
   --contact-shadow-hover: 2px 2px 2px black;
@@ -53,8 +47,8 @@ body {
     rgba(14, 14, 14, 0.5) -3px -3px 6px 1px inset;
   --typing-effect: rgba(255, 255, 255, 0.75);
   --projects-links-text-hover: var(--one-color);
-  --projects-links-text-active: var(--eight-color);
-  --projects-links-text-visited: var(--nine-color);
+  --projects-links-text-active: var(--seven-color);
+  --projects-links-text-visited: var(--eight-color);
   --projects-links-border: 1px dotted gray;
   --work-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px,
     rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
@@ -62,30 +56,25 @@ body {
 }
 
 .teal {
-  /* green: */
-  --one-color: #84c69b; /* light green */
-  --two-color: #2f8886; /* darker green */
+  --one-color: #84c69b;
+  --two-color: #2f8886;
 
-  /* dark gray */
-  --three-color: #28475c; /* lighter gray */
-  --four-color: #1a2f4b; /* darker gray */
-  --five-color: #122033; /* darkest gray */
+  --three-color: #28475c;
+  --four-color: #1a2f4b;
+  --five-color: #122033;
 
-  /* white */
-  --six-color: whitesmoke; /* less white */
-  /* --seven-color: white;  */
+  --six-color: whitesmoke;
 
-  /* green-white */
-  --eight-color: #a3eebd; /* change it later? */
-  --nine-color: #afffcb; /* change it later? */
+  --seven-color: #a3eebd;
+  --eight-color: #afffcb;
 
   /* other: */
   --float-shadow: 2px 2px 10px rgba(2, 39, 17, 0.5);
-  --gradient-text: linear-gradient(45deg, var(--one-color), var(--eight-color));
+  --gradient-text: linear-gradient(45deg, var(--one-color), var(--seven-color));
   --underline-effect: linear-gradient(
     90deg,
     var(--one-color),
-    var(--eight-color)
+    var(--seven-color)
   );
   --gradient-text-shadow: 2px 2px 10px black;
   --contact-shadow-hover: 2px 2px 2px black;
@@ -93,13 +82,13 @@ body {
     -1px 0 8px rgba(2, 39, 17, 0.5);
   --handle-background: gray;
   --selection-background: #0a1420;
-  --selection-text-color: var(--nine-color);
+  --selection-text-color: var(--eight-color);
   --track-background: black;
   --about-shadow: #315872 3px 3px 6px 0px inset, #1c3546 -3px -3px 6px 1px inset;
   --typing-effect: rgba(255, 255, 255, 0.75);
   --projects-links-text-hover: var(--one-color);
-  --projects-links-text-active: var(--eight-color);
-  --projects-links-text-visited: var(--nine-color);
+  --projects-links-text-active: var(--seven-color);
+  --projects-links-text-visited: var(--eight-color);
   --projects-links-border: 1px dotted #84c69b;
   --work-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px,
     rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
@@ -107,34 +96,29 @@ body {
 }
 
 .blue {
-  /* green: */
-  --one-color: #053742; /* light green */
-  --two-color: #a2dbfa; /* darker green */
+  --one-color: #053742;
+  --two-color: #a2dbfa;
 
-  /* dark gray */
-  --three-color: #39a2db; /* lighter gray */
-  --four-color: #55b7ec; /* darker gray */
-  --five-color: #a2dbfa; /* darkest gray */
+  --three-color: #39a2db;
+  --four-color: #55b7ec;
+  --five-color: #a2dbfa;
 
-  /* white */
-  --six-color: #053742; /* less white */
-  /* --seven-color: white;  */
+  --six-color: #053742;
 
-  /* green-white */
-  --eight-color: #e8f0f2; /* change it later? */
-  --nine-color: #053742; /* change it later? */
+  --seven-color: #e8f0f2;
+  --eight-color: #053742;
 
   /* other: */
   --float-shadow: 2px 2px 10px rgba(2, 39, 17, 0.5);
-  --gradient-text: linear-gradient(45deg, var(--six-color), red);
-  --underline-effect: linear-gradient(90deg, var(--six-color), red);
+  --gradient-text: linear-gradient(45deg, var(--six-color), rgb(0, 20, 255));
+  --underline-effect: linear-gradient(90deg, var(--six-color), rgb(0, 20, 255));
   --gradient-text-shadow: 2px 2px 5px rgba(20, 70, 94, 0.1);
-  --contact-shadow-hover: 2px 2px 2px black;
+  --contact-shadow-hover: 2px 2px 2px var(--one-color);
   --second-shadow: -1px 0 2px rgba(24, 61, 39, 0.5),
     -1px 0 8px rgba(2, 39, 17, 0.5);
   --handle-background: var(--three-color);
   --selection-background: #d9edf8;
-  --selection-text-color: var(--nine-color);
+  --selection-text-color: var(--eight-color);
   --track-background: #031c22;
   --about-shadow: rgb(72, 113, 141) 3px 3px 6px 0px inset,
     rgb(27, 56, 77) -3px -3px 6px 1px inset;
@@ -148,48 +132,40 @@ body {
   --contact-img-url: url(./Icons/telegram-blue.png);
 }
 
-.orange {
-  /* green: */
-  --one-color: #fa7d09; /* light green */
-  --two-color: #ff4301; /* darker green */
+.pink {
+  --one-color: #374c57;
+  --two-color: #93b5c6;
 
-  /* dark gray */
-  --three-color: #4a3f35; /* lighter gray */
-  --four-color: #2f2519; /* darker gray */
-  --five-color: #251c10; /* darkest gray */
+  --three-color: #faf0f0;
+  --four-color: #e4d8dc;
+  --five-color: #ffe3e3;
 
-  /* white */
-  --six-color: #eeba89; /* less white */
-  /* --seven-color: white;  */
+  --six-color: #396074;
 
-  /* green-white */
-  --eight-color: #f59032; /* change it later? */
-  --nine-color: #f59032; /* change it later? */
+  --seven-color: #e8f0f2;
+  --eight-color: #506774;
 
   /* other: */
-  --float-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-  --gradient-text: linear-gradient(45deg, var(--one-color), var(--eight-color));
-  --underline-effect: linear-gradient(
-    90deg,
-    var(--one-color),
-    var(--eight-color)
-  );
-  --gradient-text-shadow: 2px 2px 10px black;
-  --contact-shadow-hover: 2px 2px 2px black;
-  --second-shadow: -1px 0 2px gray, -1px 0 8px black;
+  --float-shadow: 2px 2px 10px rgba(2, 39, 17, 0.5);
+  --gradient-text: linear-gradient(45deg, var(--six-color), #bb2626);
+  --underline-effect: linear-gradient(90deg, var(--six-color), #bb2626);
+  --gradient-text-shadow: 2px 2px 5px rgba(20, 70, 94, 0.1);
+  --contact-shadow-hover: 2px 2px 2px var(--one-color);
+  --second-shadow: -1px 0 2px rgba(24, 61, 39, 0.5),
+    -1px 0 8px rgba(2, 39, 17, 0.5);
   --handle-background: var(--three-color);
-  --selection-background: black;
-  --selection-text-color: var(--six-color);
-  --track-background: black;
-  --about-shadow: #635446 3px 3px 6px 0px inset, #332519 -3px -3px 6px 1px inset;
-  --typing-effect: #eeba89a4;
+  --selection-background: var(--one-color);
+  --selection-text-color: var(--seven-color);
+  --track-background: #031c22;
+  --about-shadow: #fdf9f9 3px 3px 6px 0px inset, #ecd0d0 -3px -3px 6px 1px inset;
+  --typing-effect: rgba(255, 255, 255, 0.75);
   --projects-links-text-hover: var(--one-color);
-  --projects-links-text-active: var(--eight-color);
-  --projects-links-text-visited: var(--nine-color);
-  --projects-links-border: 1px dotted gray;
-  --work-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px,
-    rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-  --contact-img-url: url(./Icons/telegram-orange.png);
+  --projects-links-text-active: var(--one-color);
+  --projects-links-text-visited: var(--one-color);
+  --projects-links-border: 1px dotted #84c69b;
+  --work-shadow: rgba(40, 40, 71, 0.25) 0px 25px 50px -12px,
+    rgba(43, 47, 49, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  --contact-img-url: url(./Icons/telegram-for-pink.png);
 }
 
 .first {
@@ -345,7 +321,6 @@ body {
   padding: 1rem;
   color: var(--six-color);
   padding-bottom: 100px;
-  /* margin-bottom: 50px; */
 }
 
 section {
@@ -377,7 +352,7 @@ details {
 }
 
 summary {
-  color: var(--nine-color);
+  color: var(--eight-color);
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -488,8 +463,6 @@ article details p a:visited {
   padding-top: 5rem;
   position: relative;
   z-index: 3;
-  /* min-height: 100vh; */
-  /* background: var(--four-color); */
   background: linear-gradient(rgba(0, 0, 0, 0), var(--four-color) 12%);
   display: grid;
   place-items: center;
@@ -603,9 +576,9 @@ details[open] summary ~ * {
   background: linear-gradient(45deg, #053742, #39a2db);
 }
 
-#orange {
+#pink {
   /* 1 and 3 colors */
-  background: linear-gradient(45deg, #fa7d09, #4a3f35);
+  background: linear-gradient(45deg, pink, #4a3f35);
 }
 
 .theme:not(:last-of-type) {
@@ -622,7 +595,7 @@ details[open] summary ~ * {
 .selected-theme {
   transition: border-radius 1s ease;
   border-radius: 0;
-  box-shadow: 0 0 2px 2px black;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.3);
   border: 1px solid white;
 }
 

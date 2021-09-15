@@ -14,3 +14,19 @@ function setThemeButton(theClass) {
 }
 
 setThemeButton("");
+
+// IntersectionObserver:
+const themeContainer = document.querySelector(".theme-container");
+const fadeInOptions = {};
+const fadeIn = new IntersectionObserver(handleFadeIn, fadeInOptions);
+
+function handleFadeIn(entries, fadeIn) {
+  entry = entries[0];
+  if (entry.isIntersecting) {
+    entry.target.classList.add("appear");
+  } else {
+    entry.target.classList.remove("appear");
+  }
+}
+
+fadeIn.observe(themeContainer);

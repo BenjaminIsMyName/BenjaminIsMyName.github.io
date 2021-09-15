@@ -584,12 +584,26 @@ details[open] summary ~ * {
 .theme:not(:last-of-type) {
   margin-right: min(5vw, 18px);
 }
-
+.theme-external-container {
+  height: 7rem;
+  width: 100%;
+  /* prevent animation on "theme-container" from expending scrollbar:  */
+  overflow: hidden;
+}
 .theme-container {
+  transition: opacity 0.2s linear, transform 0.2s linear;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   margin: 2rem auto;
+  transform: translateY(50%) scalex(2) scaleY(1);
+  opacity: 0;
+}
+
+.theme-container.appear {
+  transition: opacity 0.5s ease-in, transform 0.5s ease-in;
+  transform: none;
+  opacity: 1;
 }
 
 .selected-theme {

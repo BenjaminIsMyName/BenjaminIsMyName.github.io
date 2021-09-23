@@ -15,6 +15,7 @@ body {
   /* problem: CSS doesn't support transition on 'background' (for the linear-background on the 'third' div) */
   transition: background-color 0.3s ease;
 }
+
 :focus-visible {
   outline: 4px dotted var(--six-color);
   outline-offset: 2px;
@@ -57,7 +58,6 @@ body {
   --projects-links-border: 1px dotted gray;
   --work-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px,
     rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-  --contact-img-url: url(./Icons/telegram.png);
   --contact-after-color: #1c502b;
 }
 
@@ -98,7 +98,6 @@ body {
   --projects-links-border: 1px dotted #84c69b;
   --work-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px,
     rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-  --contact-img-url: url(./Icons/telegram-teal.png);
   --contact-after-color: #1c385f;
 }
 
@@ -136,7 +135,6 @@ body {
   --projects-links-border: 1px dotted #84c69b;
   --work-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px,
     rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-  --contact-img-url: url(./Icons/telegram-blue.png);
   --contact-after-color: #ddeff8;
 }
 
@@ -173,7 +171,6 @@ body {
   --projects-links-border: 1px dotted #84c69b;
   --work-shadow: rgba(40, 40, 71, 0.25) 0px 25px 50px -12px,
     rgba(43, 47, 49, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-  --contact-img-url: url(./Icons/telegram-for-pink.png);
   --contact-after-color: #ff9d9d;
 }
 
@@ -262,6 +259,7 @@ body {
     font-size: 4rem;
   }
 }
+
 @keyframes bigger {
   from {
     font-size: 3rem;
@@ -313,6 +311,7 @@ body {
   align-items: center;
   grid-gap: 15px;
 }
+
 .contact::after {
   content: "";
   position: absolute;
@@ -322,13 +321,13 @@ body {
   transform: scale(0, 1);
   transition: transform 0.3s ease;
   transform-origin: left;
+  border-radius: 0 50% 50% 0;
 }
 
-.contact .img {
+.contact svg {
   height: 1.5rem;
   width: 1.5rem;
-  background: var(--contact-img-url);
-  background-size: contain;
+  fill: var(--one-color);
 }
 
 .work {
@@ -611,6 +610,7 @@ details[open] summary ~ * {
   /* prevent animation on "theme-container" from expending scrollbar:  */
   overflow: hidden;
 }
+
 .theme-container {
   transition: opacity 0.2s linear, transform 0.2s linear;
   width: -webkit-fit-content;
@@ -645,6 +645,7 @@ details[open] summary ~ * {
     width: calc(100% - 5vmax);
     margin: 140px auto 0 auto;
   }
+
   .contact {
     position: absolute;
     margin-top: 0;
@@ -655,6 +656,7 @@ details[open] summary ~ * {
   section {
     grid-template-columns: 100%;
   }
+
   section h2 {
     margin: auto;
     width: -webkit-min-content;
@@ -663,16 +665,20 @@ details[open] summary ~ * {
     background-color: var(--three-color);
     padding: 4px 8px;
   }
+
   article {
     width: 100%;
     margin: auto;
   }
+
   details {
     width: 100%;
   }
+
   .third .about h1 {
     font-size: 1.3rem;
   }
+
   .third .about h2 {
     font-size: 1.1rem;
   }
@@ -682,6 +688,7 @@ details[open] summary ~ * {
   .third .about h1 {
     font-size: 2rem;
   }
+
   .third .about h2 {
     font-size: 1.5rem;
   }
@@ -704,8 +711,10 @@ details[open] summary ~ * {
     border: 1px solid transparent;
     box-shadow: var(--contact-shadow-hover);
   }
+
   .contact:hover::after {
     transform: scale(1, 1);
+    border-radius: 0;
   }
 
   .third .about h1 {

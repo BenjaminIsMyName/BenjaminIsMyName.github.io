@@ -1,208 +1,139 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-theme="dark">
   <head>
-    <meta charset="UTF-8" />
-    <meta content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="My Portfolio.">
-    <title>Benjamin</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Benjamin — full-stack developer. Production systems, thoughtful interfaces, automation, and the infrastructure that connects them." />
+    <meta name="theme-color" content="#111210" />
+    <meta property="og:title" content="Benjamin — Full-Stack Developer" />
+    <meta property="og:description" content="From the first idea to a system that works. Explore my projects, experience, and technical toolkit." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://benjaminismyname.github.io/" />
+    <meta property="og:image" content="https://benjaminismyname.github.io/assets/social-card.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Benjamin — full-stack developer. Turning complex into beautifully simple." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://benjaminismyname.github.io/" />
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="./index.css" />
-    <link rel="stylesheet" href="./Highlight/styles/gradient-dark.min.css" />
-    <link rel="icon" href="./Icons/icon.png"/>
+    <title>Benjamin — Full-Stack Developer</title>
+    <script>
+      try {
+        const theme = localStorage.getItem('portfolio-theme');
+        if (theme === 'light' || theme === 'dark') document.documentElement.dataset.theme = theme;
+      } catch {}
+    </script>
+    <script src="./index.js" defer></script>
   </head>
   <body>
-    <div class="first">
-      <div class="float">
-        <span class="welcome-text"
-          >Hey, I'm <span class="name">Benjamin</span></span
-        >
-      </div>
-    </div>
-    <div class="second">
-      <a rel="noopener" href="https://t.me/MyUsernameIsRECURSION" target="_blank" rel="noreferrer" class="contact">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35">
-          <path d="M-17828.316,11091.994l-9.5-11.069a2.989,2.989,0,0,1-.037-.494,3.183,3.183,0,0,1,.111-.755l12.209-13.913-14.1,9.516a2.744,2.744,0,0,1-.74.124,3.275,3.275,0,0,1-.937-.181l-.018-.012-8.664-10.321,34.688-7.89-.027.088.074-.057.266.767-13.318,34.2v0Z" transform="translate(17849.998 -11056.999)"/>
-        </svg>
-        <span>Let's Talk</span>
-      </a>
-      <div class="work">
-        <h1>Things I did....</h1>
-        <section>
-          <h2>Java</h2>
-          <article>
-            <details>
-              <summary>Get to a number by adding following numbers</summary>
-              <p>
-                <pre><code class="language-java">
-public static void findAllInRange(int min, int max) {
-  int counter = 0;
-  while (min &lt; max) {
-    if (!checkOne(min)) {
-      System.out.println("Couldn't find any for "+min+"!");
-      counter++;
-    }
-    min++;
-  }
-  System.out.println("\nAmount of numbers we couldn't find: "+counter);
-}
-
-public static boolean checkOne(int num) {
-  boolean foundWay = false; 
-  for (int i=0; i &lt; num; i++) {
-    if (putTogether(i, num))
-      foundWay = true; 
-  }
-  return foundWay;
-}
-
-public static boolean putTogether(int from, int numToFind) { 
-  int sum = from+(from+1); 
-  for (int i=from+2; sum&lt;=numToFind; sum+=i++) 
-    if (sum == numToFind) {
-      System.out.println("found "+numToFind+": "+from+" &gt;&gt;&gt; "+i);
-      return true;
-    }	
-  return false;
-}
-                  </code></pre>
-              </p>
-            </details>
-            <details>
-              <summary>Sum all digits of an integer using recursion</summary>
-              <p>
-                 <pre><code class="language-java">
-public static int sum(int num) {
-  if (num &lt; 10)
-      return num;
-  return sum(num/10)+num%10;
-}
-                  </code></pre>
-              </p>
-            </details>
-            <details>
-              <summary>Check if an integer's digits are even-odd or odd-even alternately</summary>
-              <p>
-                <pre><code class="language-java">
-public static boolean evenOddEvenOdd(int num) {
-  while (num &gt; 9) 
-    if (num%2 == (num/=10)%2)
-      return false;
-  return true;
-}
-                  </code></pre>
-              </p>
-            </details>
-            <details>
-              <summary>Title about the thing I did</summary>
-              <p>Ok, so here is what I did, and here's the code:</p>
-            </details>
-          </article>
-        </section>
-        <section>
-          <h2>Python</h2>
-          <article>
-            <details>
-              <summary>Check validity of Israeli IDs</summary>
-              <p>   
-                <pre><code class="language-python">
-def check_id_number(id_number):
-  if not id_number.isdigit() or len(id_number) &gt; 9:
-    return False
-  sum = 0
-  for index, digit in enumerate(id_number):
-    if index % 2 == 0:
-      sum += int(digit)
-    else:
-      sum += (int(digit) * 2) % 10 + int(digit) * 2 // 10
-  return sum % 10 == 0
-                </code></pre>
-            </p>
-            </details>
-            <details>
-              <summary>Title about the thing I did</summary>
-              <p>Ok, so here is what I did, and here's the code:</p>
-            </details>
-            <details>
-              <summary>Title about the thing I did</summary>
-              <p>Ok, so here is what I did, and here's the code:</p>
-            </details>
-            <details>
-              <summary>Title about the thing I did</summary>
-              <p>Ok, so here is what I did, and here's the code:</p>
-            </details>
-          </article>
-        </section>
-        <section>
-          <h2>Web</h2>
-          <article>
-            <details>
-              <summary>Convert Celsius to Fahrenheit and vice versa</summary>
-              <p>   
-                <a rel="noopener" href="https://benjaminismyname.github.io/Celsius/" target="_blank" rel="noreferrer">VIEW SITE</a>
-            </p>
-            </details>
-            <details>
-              <summary>About Israeli prime ministers, in Hebrew</summary>
-              <p>   
-                <a rel="noopener" href="https://benjaminismyname.github.io/PM/" target="_blank" rel="noreferrer">VIEW SITE</a>
-            </p>
-            </details>
-            <details>
-              <summary>Title about the thing I did</summary>
-              <p>Ok, so here is what I did, and here's the code:</p>
-            </details>
-            <details>
-              <summary>Title about the thing I did</summary>
-              <p>Ok, so here is what I did, and here's the code:</p>
-            </details>
-          </article>
-        </section>
-      </div>
-      <div class="third">
-          <div class="about">
-            <h1>A little bit about me...</h1>
-            <br/>
-            <p>I'm a 20 years old student of Software Engineering, at the Israeli 'Atid' college. </p>
-            <p>I successfully graduated pre-engineering course at 'The College of Management Academic Studies'. </p>
-            <p>I like <span class="gradient-text">beautiful UI</span> and love perfect UX.</p>
-            <br/>
-            <h2>Hobbies</h2>
-            <p>Ping pong</p>
-            <p>Chess</p>
-            <p>Movies & TV series</p>
-            <br/>
-            <h2>Skills</h2>
-            <p>Fast typing</p>
-            <p>Pretty-good English</p>
-            <p>Fast learner and creative</p>
-
-            <br/>
-            <h2>Languages</h2>
-            <p>Java</p>
-            <p>Python</p>
-            <p>JS</p>
-            <p>CSS</p>
-            <p>HTML</p>
-            <p>React</p>
-          </div>
-      </div>
-      <!-- themes: -->
-      <div class="theme-external-container">
-        <div class="theme-container">
-          <button type="button" class="theme" title="Green theme" id="default" onclick="changeTheme('')" aria-label="Default theme"/>
-          <button type="button" class="theme" title="Teal theme" id="teal" onclick="changeTheme('teal')" aria-label="Teal theme"/>
-          <button type="button"  class="theme" title="Blue theme" id="blue" onclick="changeTheme('blue')" aria-label="Blue theme"/>
-          <button type="button" class="theme" title="Pink theme" id="pink" onclick="changeTheme('pink')" aria-label="Pink theme"/>
+    <svg class="icon-definitions" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <symbol id="icon-arrow-up-right" viewBox="0 0 24 24"><path d="M5 19 19 5M5 5h14v14" /></symbol>
+      <symbol id="icon-arrow-down" viewBox="0 0 24 24"><path d="M12 4v16m-6-6 6 6 6-6" /></symbol>
+      <symbol id="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" /><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5" /></symbol>
+      <symbol id="icon-moon" viewBox="0 0 24 24"><path d="M20.8 13a9 9 0 0 1-9.8-9.8A9 9 0 1 0 20.8 13Z" /></symbol>
+      <symbol id="icon-code" viewBox="0 0 24 24"><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-13-2 16" /></symbol>
+      <symbol id="icon-layers" viewBox="0 0 24 24"><path d="m12 3 10 5-10 5L2 8l10-5Zm-10 9 10 5 10-5M2 16l10 5 10-5" /></symbol>
+      <symbol id="icon-workflow" viewBox="0 0 24 24"><rect x="3" y="3" width="6" height="6" rx="1" /><rect x="15" y="15" width="6" height="6" rx="1" /><path d="M6 9v9h9M9 6h9v9" /></symbol>
+      <symbol id="icon-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14" /></symbol>
+      <symbol id="icon-play" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7V5Z" /></symbol>
+      <symbol id="icon-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" /></symbol>
+      <symbol id="icon-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6" /></symbol>
+    </svg>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="wordmark" href="#home" aria-label="Benjamin, back to top">benjamin<span>.</span></a>
+        <nav class="navigation" id="navigation" aria-label="Main navigation">
+          <a href="#work">Work</a><a href="#experience">Experience</a><a href="#toolkit">Toolkit</a><a href="#about">About</a>
+        </nav>
+        <div class="header-actions">
+          <button class="icon-button theme-toggle" type="button" aria-label="Switch to light theme" title="Switch to light theme" hidden><svg class="icon theme-icon-light" aria-hidden="true"><use href="#icon-sun" /></svg><svg class="icon theme-icon-dark" aria-hidden="true"><use href="#icon-moon" /></svg></button>
+          <button class="icon-button menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="navigation" hidden><svg class="icon menu-icon-open" aria-hidden="true"><use href="#icon-menu" /></svg><svg class="icon menu-icon-close" aria-hidden="true"><use href="#icon-close" /></svg></button>
         </div>
       </div>
-    </div>
-
+    </header>
+    <main id="main">
+      <section class="hero container" id="home" aria-labelledby="hero-heading">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="status-dot"></span> FULL-STACK DEVELOPER</p>
+          <h1 id="hero-heading">Turning complex<br />into <span class="accent-text">beautifully</span><br /><span class="accent-text">simple.</span></h1>
+          <p class="hero-intro">Hey, I’m Benjamin. I build the interfaces you see,<br class="desktop-break" /> the systems you don’t, and everything in between.</p>
+          <div class="hero-actions"><a class="button button-primary" href="#work">Explore my work <svg class="icon" aria-hidden="true"><use href="#icon-arrow-down" /></svg></a><a class="text-link" href="#experience">My experience <svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg></a></div>
+        </div>
+        <div class="hero-visual" aria-label="Decorative intertwined sculpture">
+          <div class="visual-grid" aria-hidden="true"></div>
+          <div class="visual-corner corner-top-left" aria-hidden="true"></div><div class="visual-corner corner-top-right" aria-hidden="true"></div><div class="visual-corner corner-bottom-left" aria-hidden="true"></div><div class="visual-corner corner-bottom-right" aria-hidden="true"></div>
+          <span class="visual-topline" aria-hidden="true">A LITTLE ORDER IN THE COMPLEXITY</span>
+          <svg class="sculpture-fallback" viewBox="0 0 500 500" aria-hidden="true"><defs><linearGradient id="sculpture-gradient" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d5f5a4" /><stop offset=".45" stop-color="#788e62" /><stop offset=".6" stop-color="#d0efa8" /><stop offset="1" stop-color="#354a2c" /></linearGradient></defs><g fill="none" stroke="url(#sculpture-gradient)" stroke-width="34"><ellipse cx="250" cy="250" rx="155" ry="85" transform="rotate(-35 250 250)" /><ellipse cx="250" cy="250" rx="155" ry="85" transform="rotate(85 250 250)" /><ellipse cx="250" cy="250" rx="155" ry="85" transform="rotate(25 250 250)" /></g></svg>
+          <div id="sculpture" aria-hidden="true"></div>
+          <div class="visual-footer"><span class="visual-caption">CONNECTED BY DESIGN</span><button class="icon-button motion-toggle" type="button" aria-label="Pause sculpture animation" title="Pause animation" hidden><svg class="icon motion-icon-pause" aria-hidden="true"><use href="#icon-pause" /></svg><svg class="icon motion-icon-play" aria-hidden="true"><use href="#icon-play" /></svg></button></div>
+        </div>
+        <div class="hero-bottom"><span>IDEA <span class="path-arrow">↗</span> ARCHITECTURE <span class="path-arrow">↗</span> PRODUCTION</span><a href="#work" class="scroll-cue">A LITTLE FURTHER DOWN <svg class="icon" aria-hidden="true"><use href="#icon-arrow-down" /></svg></a></div>
+      </section>
+      <section class="expertise-band" aria-label="Areas of expertise"><div class="container expertise-inner"><span>Thoughtful interfaces</span><span class="asterisk" aria-hidden="true">✳</span><span>Production systems</span><span class="asterisk" aria-hidden="true">✳</span><span>Automation &amp; integrations</span><span class="asterisk" aria-hidden="true">✳</span><span>End-to-end ownership</span></div></section>
+      <section class="section container" id="work" aria-labelledby="work-heading">
+        <div class="section-heading"><div><p class="eyebrow section-index">01 / SELECTED WORK</p><h2 id="work-heading">Built to do<br /><span class="muted-heading">something real.</span></h2></div><p class="section-description">Production platforms, learning experiences,<br class="desktop-break" /> and web applications from my portfolio.</p></div>
+        <div class="project-filters" role="group" aria-label="Filter projects" hidden><button type="button" data-filter="all" aria-pressed="true">All work <span>07</span></button><button type="button" data-filter="platforms" aria-pressed="false">Platforms</button><button type="button" data-filter="web" aria-pressed="false">Web applications</button><button type="button" data-filter="news" aria-pressed="false">News</button></div>
+        <p id="filter-status" class="sr-only" role="status" aria-live="polite"></p>
+        <div class="projects-grid">
+          <a class="project-card project-featured" data-category="platforms" href="https://system.mpg.org.il/" target="_blank" rel="noopener noreferrer" aria-label="MPG System — open project in a new tab">
+            <div class="project-art art-mpg" aria-hidden="true"><span class="art-label">SYSTEMS THAT CONNECT THE DOTS</span><div class="system-diagram"><div class="system-node node-one"><svg class="icon"><use href="#icon-code" /></svg><span>Interfaces</span></div><div class="system-node node-two"><svg class="icon"><use href="#icon-layers" /></svg><span>Data</span></div><div class="system-hub">mpg<span>system</span></div><div class="system-node node-three"><svg class="icon"><use href="#icon-workflow" /></svg><span>Workflows</span></div><div class="diagram-ring"></div></div><span class="art-caption">PRODUCTION PLATFORM / FULL STACK</span></div>
+            <div class="project-info"><div><span class="project-category">FEATURED / PLATFORM</span><h3>MPG System</h3><p class="project-description">An operations platform connecting courses, students, sales, and workflows.</p></div><span class="project-arrow"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg></span></div>
+          </a>
+          <a class="project-card" data-category="platforms" href="https://www.ninjacode.co.il/" target="_blank" rel="noopener noreferrer" aria-label="NinjaCode — open project in a new tab">
+            <div class="project-art art-ninja" aria-hidden="true"><span class="art-label">A NEW GENERATION OF BUILDERS</span><div class="ninja-code"><span class="code-bracket">&lt;</span><span class="ninja-word">ninja<br />code<span class="code-cursor">_</span></span><span class="code-bracket">/&gt;</span></div><div class="ninja-chips"><span>Learn.</span><span>Practice.</span><span>Create.</span></div><span class="art-caption">LEARNING PLATFORM</span></div>
+            <div class="project-info"><div><span class="project-category">FEATURED / EDUCATION &amp; TECHNOLOGY</span><h3>NinjaCode</h3><p class="project-description">A learning platform with lessons, practice, and student progress tracking.</p></div><span class="project-arrow"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg></span></div>
+          </a>
+          <a class="project-card project-featured" data-category="web" href="https://jobmiter.com/" target="_blank" rel="noopener noreferrer" aria-label="Jobmiter — open project in a new tab">
+            <div class="project-art art-jobmiter" aria-hidden="true"><span class="art-label">THE NEXT CHAPTER</span><span class="new-project-badge">NEW PROJECT</span><div class="jobmiter-art"><span class="jobmiter-mark">j<span>↗</span></span><span class="jobmiter-title">jobmiter<span>.</span></span></div><span class="art-caption">AI-ASSISTED JOB DISCOVERY</span></div>
+            <div class="project-info"><div><span class="project-category">NEW / AI &amp; WEB APPLICATION</span><h3>Jobmiter</h3><p class="project-description">AI-assisted job discovery, matching, and application tracking.</p></div><span class="project-arrow"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg></span></div>
+          </a>
+          <a class="project-card" data-category="news" href="https://legacy.redilet.com/" target="_blank" rel="noopener noreferrer" aria-label="Legacy Redilet, news web app — open project in a new tab">
+            <div class="project-art art-legacy" aria-hidden="true"><span class="art-label">A DIFFERENT WAY TO READ THE NEWS</span><div class="news-art"><span class="news-kicker">THE DAILY PERSPECTIVE</span><span class="news-title">Read.<br />Discover.<br />Explore.</span><div class="news-lines"><span></span><span></span><span></span></div></div><span class="art-caption">NEWS WEB APPLICATION</span></div>
+            <div class="project-info"><div><span class="project-category">NEWS WEB APPLICATION</span><h3>Legacy Redilet</h3><p class="project-description">A news web app for discovering stories and exploring topics.</p></div><span class="project-arrow"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg></span></div>
+          </a>
+          <a class="project-card" data-category="web" href="https://www.react-market.com/" target="_blank" rel="noopener noreferrer" aria-label="React Market — open project in a new tab">
+            <div class="project-art art-react" aria-hidden="true"><span class="art-label">WEB EXPERIENCES</span><div class="react-orbit"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit orbit-three"></div><span class="orbit-core"></span></div><span class="react-art-title">react<span>market</span></span><span class="art-caption">WEB APPLICATION</span></div>
+            <div class="project-info"><div><span class="project-category">WEB APPLICATION</span><h3>React Market</h3><p class="project-description">A place to share and discover React components, hooks, and pages.</p></div><span class="project-arrow"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg></span></div>
+          </a>
+          <a class="project-card" data-category="web" href="https://redilet.com/" target="_blank" rel="noopener noreferrer" aria-label="Redilet — open project in a new tab">
+            <div class="project-art art-redilet" aria-hidden="true"><span class="art-label">FROM IDEA TO INTERFACE</span><div class="redilet-art-mark">r<span>↗</span></div><span class="redilet-art-title">redilet</span><span class="art-caption">WEB APPLICATION</span></div>
+            <div class="project-info"><div><span class="project-category">WEB APPLICATION</span><h3>Redilet</h3></div><span class="project-arrow"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg></span></div>
+          </a>
+          <a class="project-card" data-category="web" href="https://opinions-fawn.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Open Inquiry — open project in a new tab">
+            <div class="project-art art-inquiry" aria-hidden="true"><span class="art-label">ROOM FOR A DIFFERENT PERSPECTIVE</span><div class="inquiry-bubbles"><span>What if<span class="inquiry-dot">?</span></span><span>Let’s explore<span class="inquiry-dot">.</span></span></div><span class="art-caption">WEB APPLICATION</span></div>
+            <div class="project-info"><div><span class="project-category">WEB APPLICATION</span><h3>Open Inquiry</h3><p class="project-description">A space for listening, asking questions, and exploring ideas together.</p></div><span class="project-arrow"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg></span></div>
+          </a>
+        </div>
+        <div class="work-note"><span class="small-asterisk" aria-hidden="true">✳</span><p>Also behind the scenes: CRM systems, IVR systems, bots, automations, and integrations.</p></div>
+      </section>
+      <section class="experience-section" id="experience" aria-labelledby="experience-heading">
+        <div class="section container experience-layout">
+          <div class="experience-intro"><p class="eyebrow section-index">02 / THE JOURNEY</p><h2 id="experience-heading">More than code.<br /><span class="muted-heading">Ownership.</span></h2><p>From building applications to leading the infrastructure behind them. A few milestones along the way.</p><div class="experience-seal"><svg class="icon" aria-hidden="true"><use href="#icon-layers" /></svg><span>ARCHITECTURE TO INTERFACE</span></div></div>
+          <div class="timeline">
+            <article class="timeline-entry"><div class="timeline-meta"><span class="timeline-year">2024</span><span class="role-label">PROMOTION</span></div><div class="timeline-body"><p class="company-name">Progeeks</p><h3>Lead Full-Stack Developer</h3><p>Promoted to lead full-stack development, with responsibility for the company’s entire technical infrastructure.</p><ul class="tags" aria-label="Technologies"><li>AWS</li><li>Cloudflare</li><li>Docker</li><li>Convex</li><li>Automation</li><li>CRM systems</li></ul></div></article>
+            <article class="timeline-entry"><div class="timeline-meta"><span class="timeline-year">2023</span><span class="role-label">PART-TIME</span></div><div class="timeline-body"><p class="company-name">XRND</p><h3>Full-Stack Developer</h3><p>A part-time full-stack role alongside my work at Progeeks, spanning web and mobile technologies.</p><ul class="tags" aria-label="Technologies"><li>React</li><li>React Native</li><li>Next.js</li><li>Node.js</li><li>TypeScript</li><li>SQL</li></ul></div></article>
+            <article class="timeline-entry"><div class="timeline-meta"><span class="timeline-year">2022</span><span class="role-label">DEVELOPMENT &amp; TEACHING</span></div><div class="timeline-body"><p class="company-name">Progeeks</p><h3>Full-Stack Developer<br />&amp; Programming Instructor</h3><p>Built and maintained production systems, internal tools, and customer-facing applications, while teaching programming.</p><ul class="tags" aria-label="Technologies"><li>JavaScript</li><li>TypeScript</li><li>Python</li><li>SQL</li><li>Node.js</li><li>Next.js</li><li>React</li></ul></div></article>
+          </div>
+        </div>
+      </section>
+      <section class="section container" id="toolkit" aria-labelledby="toolkit-heading">
+        <div class="section-heading"><div><p class="eyebrow section-index">03 / THE TOOLKIT</p><h2 id="toolkit-heading">The right tool.<br /><span class="muted-heading">The whole picture.</span></h2></div><p class="section-description">Comfortable across the stack.<br />Curious about what comes next.</p></div>
+        <div class="toolkit-grid">
+          <article class="toolkit-card"><div class="toolkit-title"><svg class="icon" aria-hidden="true"><use href="#icon-code" /></svg><span>01</span></div><h3>Interfaces &amp; experiences</h3><p>The part people interact with.</p><ul class="skill-list"><li class="skill-featured">React</li><li class="skill-featured">Next.js</li><li class="skill-featured">TypeScript</li><li>JavaScript</li><li>React Native</li><li>Tailwind CSS</li><li>shadcn/ui</li><li>HTML &amp; CSS</li><li>PWAs</li></ul></article>
+          <article class="toolkit-card"><div class="toolkit-title"><svg class="icon" aria-hidden="true"><use href="#icon-layers" /></svg><span>02</span></div><h3>Services &amp; data</h3><p>The foundations that make it work.</p><ul class="skill-list"><li class="skill-featured">Node.js</li><li class="skill-featured">PostgreSQL</li><li class="skill-featured">Convex</li><li>Python</li><li>Express.js</li><li>SQL</li><li>MongoDB</li><li>Redis</li><li>Supabase</li><li>Drizzle ORM</li><li>tRPC</li><li>Zod</li><li>REST APIs</li><li>WebSockets</li></ul></article>
+          <article class="toolkit-card"><div class="toolkit-title"><svg class="icon" aria-hidden="true"><use href="#icon-workflow" /></svg><span>03</span></div><h3>Infrastructure &amp; automation</h3><p>Connecting, deploying, and improving.</p><ul class="skill-list"><li class="skill-featured">AWS</li><li class="skill-featured">Docker</li><li class="skill-featured">Cloudflare</li><li>Vercel</li><li>CI/CD</li><li>Git &amp; GitHub</li><li>Make</li><li>Webhooks</li><li>OAuth</li><li>Twilio</li><li>AI agents</li><li>PostHog</li><li>FFmpeg</li><li>CRM systems</li></ul></article>
+        </div>
+      </section>
+      <section class="about-section" id="about" aria-labelledby="about-heading">
+        <div class="section container about-grid">
+          <div class="about-copy"><p class="eyebrow section-index">04 / A LITTLE ABOUT ME</p><h2 id="about-heading">A builder’s mindset.<br /><span class="muted-heading">A curious mind.</span></h2><p>I like beautiful UI and love thoughtful UX. These days, that curiosity goes deeper: into architecture, databases, infrastructure, and the connections that make a product work.</p><p>I’m comfortable taking a project from the first technical decision through to production, and enjoy untangling complex problems along the way.</p><div class="personal-note"><span class="small-asterisk" aria-hidden="true">✳</span><span>Away from the keyboard: chess, ping pong, and a good movie.</span></div></div>
+          <div class="education"><p class="eyebrow">THE FOUNDATIONS</p><article class="education-card"><div class="education-meta"><span>2020</span><span class="honors-badge">SUMMA CUM LAUDE</span></div><h3>Software Engineering</h3><p>Israeli ‘Atid’ College</p><div class="grade"><strong>98<span>/100</span></strong><span>AVERAGE GRADE</span></div></article><article class="education-course"><span class="education-year">2017</span><div><h3>Pre-engineering course</h3><p>The College of Management Academic Studies</p></div></article></div>
+        </div>
+      </section>
+      <div class="closing container"><span class="closing-symbol" aria-hidden="true">✳</span><p>Thoughtfully built.<br /><span class="muted-heading">Always evolving.</span></p><a class="back-to-top" href="#home" aria-label="Back to top"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg></a></div>
+    </main>
+    <footer class="site-footer"><div class="container footer-inner"><a class="wordmark" href="#home">benjamin<span>.</span></a><span>© <span id="copyright-year">2026</span> Benjamin</span><span class="footer-note">A LITTLE CURIOSITY GOES A LONG WAY.</span></div></footer>
   </body>
-  <footer>
-    <script src="./index.js"></script>
-    <script src="./Highlight/highlight.min.js"></script>
-    <script>
-      hljs.highlightAll();
-    </script>
-  </footer>
 </html>

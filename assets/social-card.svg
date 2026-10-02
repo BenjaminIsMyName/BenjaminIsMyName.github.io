@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <pattern id="grid" width="42" height="42" patternUnits="userSpaceOnUse"><path d="M42 0H0v42" fill="none" stroke="#30332b" stroke-width="1"/></pattern>
+    <linearGradient id="loop" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d5f5a4"/><stop offset=".45" stop-color="#788e62"/><stop offset=".6" stop-color="#d0efa8"/><stop offset="1" stop-color="#354a2c"/></linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#111210"/>
+  <rect x="700" y="95" width="420" height="420" fill="url(#grid)" opacity=".6"/>
+  <text x="68" y="85" fill="#f1f2e9" font-family="Arial,sans-serif" font-size="30" font-weight="600" letter-spacing="-1">benjamin<tspan fill="#c0ed80">.</tspan></text>
+  <path d="M68 122h1064" stroke="#30332b"/>
+  <circle cx="73" cy="187" r="4" fill="#c0ed80"/>
+  <text x="88" y="192" fill="#a2a69b" font-family="Arial,sans-serif" font-size="13" letter-spacing="2">FULL-STACK DEVELOPER</text>
+  <g font-family="Arial,sans-serif" font-size="74" font-weight="500" letter-spacing="-3">
+    <text x="68" y="294" fill="#f1f2e9">Turning complex</text>
+    <text x="68" y="377" fill="#f1f2e9">into <tspan fill="#c0ed80">beautifully</tspan></text>
+    <text x="68" y="460" fill="#c0ed80">simple.</text>
+  </g>
+  <g fill="none" stroke="url(#loop)" stroke-width="28">
+    <ellipse cx="905" cy="324" rx="152" ry="80" transform="rotate(-35 905 324)"/>
+    <ellipse cx="905" cy="324" rx="152" ry="80" transform="rotate(85 905 324)"/>
+    <ellipse cx="905" cy="324" rx="152" ry="80" transform="rotate(25 905 324)"/>
+  </g>
+  <path d="M68 544h1064" stroke="#30332b"/>
+  <text x="68" y="585" fill="#a2a69b" font-family="Arial,sans-serif" font-size="12" letter-spacing="1.5">INTERFACES / SYSTEMS / AUTOMATION</text>
+</svg>

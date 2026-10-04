@@ -34,6 +34,9 @@ ul { margin: 0; padding: 0; list-style: none; }
 [data-theme='light'] .theme-icon-dark, .menu-toggle[aria-expanded='true'] .menu-icon-close, .motion-toggle[aria-pressed='true'] .motion-icon-play { display: block; }
 .menu-toggle[aria-expanded='true'] .menu-icon-open, .motion-toggle[aria-pressed='true'] .motion-icon-pause { display: none; }
 .menu-toggle { display: none; }
+.sound-icon-on, .sound-toggle[aria-pressed='true'] .sound-icon-off { display: none; }
+.sound-toggle[aria-pressed='true'] .sound-icon-on { display: block; }
+.sound-toggle[aria-pressed='true'] { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
 .hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 30px; padding-top: 91px; }
 .hero-copy { padding-top: 8px; position: relative; z-index: 1; }
 .eyebrow { font-family: var(--font-heading); font-size: 11px; font-weight: 500; line-height: 1.6; letter-spacing: 1.6px; display: flex; align-items: center; gap: 10px; }

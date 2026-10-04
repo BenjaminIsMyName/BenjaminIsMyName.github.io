@@ -97,10 +97,15 @@
   document.addEventListener('click', (event) => {
     if (!enabled || !event.isTrusted || event.defaultPrevented || !(event.target instanceof Element)) return;
     const control = event.target.closest('a[href], button');
-    if (!control || control === button || control.disabled || control.getAttribute('aria-disabled') === 'true') return;
-    if (control.matches('.theme-toggle, .menu-toggle, .motion-toggle')) void play('toggle');
+    if (!control || control === button || control.matches('.theme-toggle') || control.disabled || control.getAttribute('aria-disabled') === 'true') return;
+    if (control.matches('.menu-toggle, .motion-toggle')) void play('toggle');
     else if (control.matches('a[href^="#"]')) void play('navigate');
     else void play('click');
+  });
+
+  // Includes genuine taps retargeted to the root by a theme reveal snapshot.
+  window.addEventListener('portfolio-theme-activate', (event) => {
+    if (event.detail?.isTrusted) void play('toggle');
   });
 
   document.addEventListener('visibilitychange', () => {

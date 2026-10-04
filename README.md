@@ -14,7 +14,7 @@ Open `http://127.0.0.1:4173`.
 
 - `index.html`: portfolio content, project links, experience, education, and skills.
 - `index.css`: responsive layout, self-hosted fonts, and dark/light themes.
-- `index.js`: navigation, project filters, theme persistence, and progressive enhancement.
+- `index.js`: navigation, project filters, theme persistence, and progressive enhancement. Theme changes reveal in a circle from the toggle using the native View Transition API. Reduced motion and browsers without this API switch immediately.
 - `assets/sounds.js`: opt-in sound effects using native Web Audio. The speaker button remembers the preference; audio loads only after an interaction while enabled. Navigation, clicks, and toggles use distinct quiet sounds. Muting stops playing and pending sounds immediately.
 - `assets/sculpture.js`: decorative Three.js hero. An SVG fallback remains when WebGL is unavailable. Animation respects reduced motion, can be paused, and stops when the hero is off screen or the tab is hidden.
 
@@ -39,3 +39,5 @@ Checked in Chromium at eight widths from 320 to 1920 pixels, including project f
 axe-core 4.10.3 reported no violations for its WCAG 2 A/AA and WCAG 2.1 AA rules in the dark and light themes at desktop and mobile sizes. This is an automated check, not a complete accessibility certification.
 
 Sound checks verified actual decoding and playback of all three clips, keyboard activation, default mute, preference persistence without autoplay, immediate mute, cancellation during delayed loading, blocked storage, and unavailable Web Audio. The updated header fits all eight responsive widths, and the sound control passes the same automated accessibility checks in both themes.
+
+The circular theme reveal was visually checked on desktop and mobile, with keyboard activation, repeated pointer clicks and touch taps, matching toggle sounds, scroll preservation, saved preferences, blocked storage, reduced motion (including a change during animation), and unavailable or failing View Transition APIs. No script errors or horizontal overflow were found.

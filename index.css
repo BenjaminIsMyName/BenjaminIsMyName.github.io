@@ -2,6 +2,13 @@
 @font-face { font-family: 'DM Sans'; src: url('./assets/fonts/dm-sans-latin.woff2') format('woff2'); font-style: normal; font-weight: 100 1000; font-display: swap; }
 :root { color-scheme: dark; --bg: #111210; --surface: #181a16; --surface-raised: #1e211b; --text: #f1f2e9; --muted: #a2a69b; --subtle: #858b7c; --line: #30332b; --accent: #c0ed80; --accent-ink: #1b2511; --header-bg: rgb(17 18 16 / 92%); --font-heading: 'Space Grotesk', Arial, sans-serif; --font-body: 'DM Sans', Arial, sans-serif; }
 :root[data-theme='light'] { color-scheme: light; --bg: #f7f7ef; --surface: #eeefe6; --surface-raised: #e8eadf; --text: #22261c; --muted: #626858; --subtle: #626958; --line: #d5d9cb; --accent: #48691b; --accent-ink: #f5ffe6; --header-bg: rgb(247 247 239 / 93%); }
+/* Keep both snapshots opaque while the new theme expands from the button. */
+:root.theme-transition::view-transition-group(root),
+:root.theme-transition::view-transition-old(root),
+:root.theme-transition::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+:root.theme-transition::view-transition-old(root) { z-index: 1; }
+:root.theme-transition::view-transition-new(root) { z-index: 2; }
+:root.theme-transition *, :root.theme-transition *::before, :root.theme-transition *::after { transition: none !important; }
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 100px; }
 body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font-body); -webkit-font-smoothing: antialiased; }

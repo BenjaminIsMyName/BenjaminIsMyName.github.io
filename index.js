@@ -15,11 +15,76 @@ function updateThemeButton() {
 
 themeButton.hidden = false;
 updateThemeButton();
-themeButton.addEventListener('click', () => {
-  root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
-  try { localStorage.setItem('portfolio-theme', root.dataset.theme); } catch {}
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+let requestedTheme = root.dataset.theme;
+let themeTransition = null;
+
+function setTheme(theme) {
+  root.dataset.theme = theme;
+  try { localStorage.setItem('portfolio-theme', theme); } catch {}
   updateThemeButton();
   window.dispatchEvent(new Event('portfolio-theme-change'));
+}
+
+async function switchTheme(event) {
+  if (event.isTrusted) window.dispatchEvent(new CustomEvent('portfolio-theme-activate', { detail: event }));
+  requestedTheme = requestedTheme === 'dark' ? 'light' : 'dark';
+  // Finish the current reveal, then honor the latest choice after rapid clicks.
+  if (themeTransition) {
+    themeTransition.skipTransition();
+    return;
+  }
+
+  while (root.dataset.theme !== requestedTheme) {
+    const nextTheme = requestedTheme;
+    if (reducedMotion.matches || typeof document.startViewTransition !== 'function') {
+      setTheme(nextTheme);
+      continue;
+    }
+
+    const { left, top, width, height } = themeButton.getBoundingClientRect();
+    const x = left + width / 2;
+    const y = top + height / 2;
+    const radius = Math.ceil(Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y)));
+    root.classList.add('theme-transition');
+
+    try {
+      themeTransition = document.startViewTransition(() => setTheme(nextTheme));
+      try {
+        await themeTransition.ready;
+        root.animate({
+          clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`],
+        }, {
+          duration: 450,
+          easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
+          pseudoElement: '::view-transition-new(root)',
+        });
+      } catch {
+        // A hidden tab or interrupted transition still applies the theme.
+        themeTransition.skipTransition();
+      }
+      await themeTransition.finished;
+    } catch {
+      setTheme(nextTheme);
+    } finally {
+      themeTransition = null;
+      root.classList.remove('theme-transition');
+    }
+  }
+}
+themeButton.addEventListener('click', switchTheme);
+reducedMotion.addEventListener('change', () => {
+  if (reducedMotion.matches) themeTransition?.skipTransition();
+});
+// Snapshot clicks target the root. Honor taps over the toggle during the reveal.
+document.addEventListener('click', (event) => {
+  if (!themeTransition || event.target !== root || !event.isTrusted || event.button !== 0) return;
+  const rect = themeButton.getBoundingClientRect();
+  if (event.clientX >= rect.left && event.clientX <= rect.right &&
+      event.clientY >= rect.top && event.clientY <= rect.bottom) {
+    void switchTheme(event);
+    event.stopImmediatePropagation();
+  }
 });
 
 const menuButton = document.querySelector('.menu-toggle');

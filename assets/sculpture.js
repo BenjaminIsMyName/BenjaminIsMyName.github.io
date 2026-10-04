@@ -50,6 +50,8 @@ export function initSculpture() {
   let elapsed = 0;
   let pointerX = 0;
   let pointerY = 0;
+  let targetPointerX = 0;
+  let targetPointerY = 0;
   let disposed = false;
   let contextLost = false;
 
@@ -78,8 +80,11 @@ export function initSculpture() {
     if (!lastFrame || time - lastFrame >= 1000 / 30) {
       elapsed += delta;
       lastFrame = time;
+      const pointerBlend = 1 - Math.exp(-delta * 6);
+      pointerX += (targetPointerX - pointerX) * pointerBlend;
+      pointerY += (targetPointerY - pointerY) * pointerBlend;
       sculpture.rotation.y = 0.25 + elapsed * 0.13 + pointerX * 0.25;
-      sculpture.rotation.x += (0.65 + pointerY * 0.16 - sculpture.rotation.x) * 0.04;
+      sculpture.rotation.x = 0.65 + pointerY * 0.16;
       sculpture.position.y = Math.sin(elapsed * 0.7) * 0.04;
       render();
     }
@@ -95,10 +100,10 @@ export function initSculpture() {
   function onPointerMove(event) {
     if (userPaused || reducedMotion.matches) return;
     const bounds = visual.getBoundingClientRect();
-    pointerX = (event.clientX - bounds.left) / bounds.width - 0.5;
-    pointerY = (event.clientY - bounds.top) / bounds.height - 0.5;
+    targetPointerX = Math.max(-0.5, Math.min(0.5, (event.clientX - bounds.left) / bounds.width - 0.5));
+    targetPointerY = Math.max(-0.5, Math.min(0.5, (event.clientY - bounds.top) / bounds.height - 0.5));
   }
-  function resetPointer() { pointerX = 0; pointerY = 0; }
+  function resetPointer() { targetPointerX = 0; targetPointerY = 0; }
   function onMotionChange() {
     userPaused = reducedMotion.matches;
     resetPointer();

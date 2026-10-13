@@ -18,6 +18,9 @@ updateThemeButton();
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 let requestedTheme = root.dataset.theme;
 let themeTransition = null;
+let themeReveal = null;
+let revealTheme = null;
+let themeSwitchRunning = false;
 
 function setTheme(theme) {
   root.dataset.theme = theme;
@@ -29,52 +32,69 @@ function setTheme(theme) {
 async function switchTheme(event) {
   if (event.isTrusted) window.dispatchEvent(new CustomEvent('portfolio-theme-activate', { detail: event }));
   requestedTheme = requestedTheme === 'dark' ? 'light' : 'dark';
-  // Finish the current reveal, then honor the latest choice after rapid clicks.
-  if (themeTransition) {
-    themeTransition.skipTransition();
+  // Reverse the existing reveal instead of destroying and recapturing snapshots.
+  if (themeSwitchRunning) {
+    if (themeReveal && themeReveal.playState !== 'finished') {
+      themeReveal.updatePlaybackRate(requestedTheme === revealTheme ? 1 : -1);
+    }
     return;
   }
+  themeSwitchRunning = true;
 
-  while (root.dataset.theme !== requestedTheme) {
-    const nextTheme = requestedTheme;
-    if (reducedMotion.matches || typeof document.startViewTransition !== 'function') {
-      setTheme(nextTheme);
-      continue;
-    }
-
-    const { left, top, width, height } = themeButton.getBoundingClientRect();
-    const x = left + width / 2;
-    const y = top + height / 2;
-    const radius = Math.ceil(Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y)));
-    root.classList.add('theme-transition');
-
-    try {
-      themeTransition = document.startViewTransition(() => setTheme(nextTheme));
-      try {
-        await themeTransition.ready;
-        root.animate({
-          clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`],
-        }, {
-          duration: 450,
-          easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
-          pseudoElement: '::view-transition-new(root)',
-        });
-      } catch {
-        // A hidden tab or interrupted transition still applies the theme.
-        themeTransition.skipTransition();
+  try {
+    while (root.dataset.theme !== requestedTheme) {
+      const nextTheme = requestedTheme;
+      if (reducedMotion.matches || typeof document.startViewTransition !== 'function') {
+        setTheme(nextTheme);
+        continue;
       }
-      await themeTransition.finished;
-    } catch {
-      setTheme(nextTheme);
-    } finally {
-      themeTransition = null;
-      root.classList.remove('theme-transition');
+
+      const { left, top, width, height } = themeButton.getBoundingClientRect();
+      const x = left + width / 2;
+      const y = top + height / 2;
+      const radius = Math.ceil(Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y)));
+      root.classList.add('theme-transition');
+
+      try {
+        themeTransition = document.startViewTransition(() => setTheme(nextTheme));
+        try {
+          await themeTransition.ready;
+          if (!reducedMotion.matches && requestedTheme === nextTheme) {
+            revealTheme = nextTheme;
+            themeReveal = root.animate({
+              clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`],
+            }, {
+              duration: 450,
+              easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
+              pseudoElement: '::view-transition-new(root)',
+            });
+            await themeReveal.finished;
+          }
+          // A reversed reveal ends on the old snapshot; commit it before cleanup.
+          if (root.dataset.theme !== requestedTheme) setTheme(requestedTheme);
+        } catch {
+          // A skipped or unavailable snapshot still runs the theme update.
+        }
+        await themeTransition.finished;
+      } catch {
+        setTheme(nextTheme);
+      } finally {
+        themeTransition = null;
+        themeReveal = null;
+        revealTheme = null;
+        root.classList.remove('theme-transition');
+      }
+      // Give the compositor time to release the old snapshots before recapturing.
+      await new Promise(requestAnimationFrame);
+      await new Promise(requestAnimationFrame);
     }
+  } finally {
+    themeSwitchRunning = false;
   }
 }
 themeButton.addEventListener('click', switchTheme);
 reducedMotion.addEventListener('change', () => {
-  if (reducedMotion.matches) themeTransition?.skipTransition();
+  if (reducedMotion.matches) themeReveal?.finish();
 });
 // Snapshot clicks target the root. Honor taps over the toggle during the reveal.
 document.addEventListener('click', (event) => {

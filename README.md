@@ -14,7 +14,7 @@ Open `http://127.0.0.1:4173`.
 
 - `index.html`: portfolio content, project links, experience, education, and skills.
 - `index.css`: responsive layout, self-hosted fonts, and dark/light themes.
-- `index.js`: navigation, project filters, theme persistence, and progressive enhancement. Theme changes reveal in a circle from the toggle using the native View Transition API. Reduced motion and browsers without this API switch immediately.
+- `index.js`: navigation, project filters, theme persistence, and progressive enhancement. Theme changes reveal in a circle from the toggle using the native View Transition API. Clicking during a reveal reverses the existing circle from its current position, reusing the same snapshots. The final theme is committed before snapshot cleanup; native transitions are never cancelled and immediately restarted. Reduced motion and browsers without this API switch immediately.
 - `assets/sounds.js`: opt-in sound effects using native Web Audio. The speaker button remembers the preference; audio loads only after an interaction while enabled. Navigation, clicks, and toggles use distinct quiet sounds. Muting stops playing and pending sounds immediately.
 - `assets/sculpture.js`: decorative Three.js hero. An SVG fallback remains when WebGL is unavailable. Animation respects reduced motion, can be paused, and stops when the hero is off screen or the tab is hidden.
 
@@ -41,3 +41,5 @@ axe-core 4.10.3 reported no violations for its WCAG 2 A/AA and WCAG 2.1 AA rules
 Sound checks verified actual decoding and playback of all three clips, keyboard activation, default mute, preference persistence without autoplay, immediate mute, cancellation during delayed loading, blocked storage, and unavailable Web Audio. The updated header fits all eight responsive widths, and the sound control passes the same automated accessibility checks in both themes.
 
 The circular theme reveal was visually checked on desktop and mobile, with keyboard activation, repeated pointer clicks and touch taps, matching toggle sounds, scroll preservation, saved preferences, blocked storage, reduced motion (including a change during animation), and unavailable or failing View Transition APIs. No script errors or horizontal overflow were found.
+
+The Chromium rapid-click crash was reproduced on the live site in Chrome. The reversible reveal survived physical double-click bursts in that same Chrome with WebGL and sounds enabled. An additional browser check verified immediate reversal within one snapshot transition, reversing twice before completion, 45 pointer clicks at delays from 0 to 280 milliseconds, and 41 keyboard presses. It confirmed at most one active native transition and no calls to `skipTransition`, and verified theme persistence, reduced motion during a reversed reveal, and the unsupported-API fallback. Edge was not installed in the test environment.

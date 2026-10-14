@@ -16,7 +16,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://benjaminismyname.github.io/" />
     <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="./index.css?v=20261013" />
+    <link rel="stylesheet" href="./index.css?v=20261014" />
     <title>Benjamin — Full-Stack Developer</title>
     <script>
       try {
@@ -62,7 +62,7 @@
         <div class="hero-copy">
           <h1 id="hero-heading">Hi, I’m<br /><span class="accent-text">Benjamin.</span></h1>
           <p class="hero-intro">I’m a full-stack developer. I work on web apps, internal tools, and the infrastructure behind them.</p>
-          <div class="hero-actions"><a class="button button-primary" href="#work">View projects <svg class="icon" aria-hidden="true"><use href="#icon-arrow-down" /></svg></a><a class="text-link" href="#experience">Experience <svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg></a></div>
+          <div class="hero-actions"><a class="button button-primary" href="#work">View projects <svg class="icon" aria-hidden="true"><use href="#icon-arrow-down" /></svg></a></div>
         </div>
         <div class="hero-visual" aria-label="Decorative intertwined sculpture">
           <svg class="sculpture-fallback" viewBox="0 0 500 500" aria-hidden="true"><defs><linearGradient id="sculpture-gradient" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d5f5a4" /><stop offset=".45" stop-color="#788e62" /><stop offset=".6" stop-color="#d0efa8" /><stop offset="1" stop-color="#354a2c" /></linearGradient></defs><g fill="none" stroke="url(#sculpture-gradient)" stroke-width="34"><ellipse cx="250" cy="250" rx="155" ry="85" transform="rotate(-35 250 250)" /><ellipse cx="250" cy="250" rx="155" ry="85" transform="rotate(85 250 250)" /><ellipse cx="250" cy="250" rx="155" ry="85" transform="rotate(25 250 250)" /></g></svg>
@@ -71,40 +71,38 @@
         </div>
       </section>
       <section class="section container" id="work" aria-labelledby="work-heading">
-        <div class="section-heading"><h2 id="work-heading">Selected projects</h2><p class="section-description">Course management, programming education,<br class="desktop-break" /> job search, and news.</p></div>
-        <div class="project-filters" role="group" aria-label="Filter projects" hidden><button type="button" data-filter="all" aria-pressed="true">All work <span>07</span></button><button type="button" data-filter="platforms" aria-pressed="false">Platforms</button><button type="button" data-filter="web" aria-pressed="false">Web applications</button><button type="button" data-filter="news" aria-pressed="false">News</button></div>
-        <p id="filter-status" class="sr-only" role="status" aria-live="polite"></p>
+        <div class="section-heading"><h2 id="work-heading">Selected projects</h2></div>
         <div class="projects-grid">
-          <a class="project-card project-featured" data-category="platforms" href="https://system.mpg.org.il/" target="_blank" rel="noopener noreferrer" aria-label="MPG System — open project in a new tab">
+          <a class="project-card project-featured" href="https://system.mpg.org.il/" target="_blank" rel="noopener noreferrer" aria-label="MPG System — open project in a new tab">
             <div class="project-art art-mpg" aria-hidden="true"><div class="system-diagram"><div class="system-node node-one"><svg class="icon"><use href="#icon-code" /></svg><span>Interfaces</span></div><div class="system-node node-two"><svg class="icon"><use href="#icon-layers" /></svg><span>Data</span></div><div class="system-hub">mpg<span>system</span></div><div class="system-node node-three"><svg class="icon"><use href="#icon-workflow" /></svg><span>Workflows</span></div><div class="diagram-ring"></div></div></div>
             <div class="project-info"><div><span class="project-category">FEATURED / PLATFORM</span><h3>MPG System</h3><p class="project-description">An operations platform connecting courses, students, sales, and workflows.</p></div><span class="project-arrow"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg></span></div>
           </a>
-          <a class="project-card" data-category="platforms" href="https://www.ninjacode.co.il/" target="_blank" rel="noopener noreferrer" aria-label="NinjaCode — open project in a new tab">
+          <a class="project-card" href="https://www.ninjacode.co.il/" target="_blank" rel="noopener noreferrer" aria-label="NinjaCode — open project in a new tab">
             <div class="project-art art-ninja" aria-hidden="true"><div class="ninja-code"><span class="code-bracket">&lt;</span><span class="ninja-word">ninja<br />code<span class="code-cursor">_</span></span><span class="code-bracket">/&gt;</span></div></div>
             <div class="project-info"><div><span class="project-category">FEATURED / EDUCATION &amp; TECHNOLOGY</span><h3>NinjaCode</h3><p class="project-description">A learning platform with lessons, practice, and student progress tracking.</p></div><span class="project-arrow"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg></span></div>
           </a>
-          <a class="project-card project-featured" data-category="web" href="https://jobmiter.com/" target="_blank" rel="noopener noreferrer" aria-label="Jobmiter — open project in a new tab">
+          <a class="project-card project-featured" href="https://jobmiter.com/" target="_blank" rel="noopener noreferrer" aria-label="Jobmiter — open project in a new tab">
             <div class="project-art art-jobmiter" aria-hidden="true"><div class="jobmiter-art"><span class="jobmiter-mark">j<span>↗</span></span><span class="jobmiter-title">jobmiter<span>.</span></span></div></div>
             <div class="project-info"><div><span class="project-category">NEW / AI &amp; WEB APPLICATION</span><h3>Jobmiter</h3><p class="project-description">AI-assisted job discovery, matching, and application tracking.</p></div><span class="project-arrow"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg></span></div>
           </a>
-          <a class="project-card" data-category="news" href="https://legacy.redilet.com/" target="_blank" rel="noopener noreferrer" aria-label="Legacy Redilet, news web app — open project in a new tab">
-            <div class="project-art art-legacy" aria-hidden="true"><div class="news-art"><span class="news-title">Legacy<br />Redilet</span><div class="news-lines"><span></span><span></span><span></span></div></div></div>
-            <div class="project-info"><div><span class="project-category">NEWS WEB APPLICATION</span><h3>Legacy Redilet</h3><p class="project-description">A news web app for discovering stories and exploring topics.</p></div><span class="project-arrow"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg></span></div>
+          <a class="project-card" href="https://legacy.redilet.com/" target="_blank" rel="noopener noreferrer" aria-label="News Platform — open project in a new tab">
+            <div class="project-art art-legacy" aria-hidden="true"><div class="news-art"><span class="news-title">News<br />Platform</span><div class="news-lines"><span></span><span></span><span></span></div></div></div>
+            <div class="project-info"><div><span class="project-category">NEWS WEB APPLICATION</span><h3>News Platform</h3><p class="project-description">A news web app for discovering stories and exploring topics.</p></div><span class="project-arrow"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg></span></div>
           </a>
-          <a class="project-card" data-category="web" href="https://www.react-market.com/" target="_blank" rel="noopener noreferrer" aria-label="React Market — open project in a new tab">
+          <a class="project-card" href="https://www.react-market.com/" target="_blank" rel="noopener noreferrer" aria-label="React Market — open project in a new tab">
             <div class="project-art art-react" aria-hidden="true"><div class="react-orbit"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit orbit-three"></div><span class="orbit-core"></span></div><span class="react-art-title">react<span>market</span></span></div>
             <div class="project-info"><div><span class="project-category">WEB APPLICATION</span><h3>React Market</h3><p class="project-description">A place to share and discover React components, hooks, and pages.</p></div><span class="project-arrow"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg></span></div>
           </a>
-          <a class="project-card" data-category="web" href="https://redilet.com/" target="_blank" rel="noopener noreferrer" aria-label="Redilet — open project in a new tab">
+          <a class="project-card" href="https://redilet.com/" target="_blank" rel="noopener noreferrer" aria-label="Redilet — open project in a new tab">
             <div class="project-art art-redilet" aria-hidden="true"><div class="redilet-art-mark">r<span>↗</span></div><span class="redilet-art-title">redilet</span></div>
-            <div class="project-info"><div><span class="project-category">WEB APPLICATION</span><h3>Redilet</h3></div><span class="project-arrow"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg></span></div>
+            <div class="project-info"><div><span class="project-category">iOS, Android &amp; web</span><h3>Redilet</h3><p class="project-description">A gaming and dating app for iOS and Android, with web support. Meet new people through games, text chat, and voice chat.</p></div><span class="project-arrow"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg></span></div>
           </a>
-          <a class="project-card" data-category="web" href="https://opinions-fawn.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Open Inquiry — open project in a new tab">
+          <a class="project-card" href="https://opinions-fawn.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Open Inquiry — open project in a new tab">
             <div class="project-art art-inquiry" aria-hidden="true"><div class="inquiry-bubbles"><span>What if<span class="inquiry-dot">?</span></span><span>Let’s explore<span class="inquiry-dot">.</span></span></div></div>
             <div class="project-info"><div><span class="project-category">WEB APPLICATION</span><h3>Open Inquiry</h3><p class="project-description">A space for listening, asking questions, and exploring ideas together.</p></div><span class="project-arrow"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg></span></div>
           </a>
         </div>
-        <div class="work-note"><p>Other work includes CRM and IVR systems, bots, automations, and integrations.</p></div>
+        <div class="work-note"><p>Other work includes internal CRM and IVR systems, bots, automations, and integrations.</p></div>
       </section>
       <section class="experience-section" id="experience" aria-labelledby="experience-heading">
         <div class="section container experience-layout">

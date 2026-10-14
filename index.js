@@ -130,27 +130,6 @@ document.addEventListener('keydown', (event) => {
 });
 window.matchMedia('(min-width: 601px)').addEventListener('change', () => setMenuOpen(false));
 
-const projectFilters = document.querySelector('.project-filters');
-const projectGrid = document.querySelector('.projects-grid');
-const projectCards = [...document.querySelectorAll('.project-card')];
-const filterStatus = document.querySelector('#filter-status');
-projectFilters.hidden = false;
-projectFilters.addEventListener('click', (event) => {
-  const button = event.target.closest('button[data-filter]');
-  if (!button) return;
-  const filter = button.dataset.filter;
-  for (const item of projectFilters.querySelectorAll('button')) {
-    item.setAttribute('aria-pressed', String(item === button));
-  }
-  projectGrid.classList.toggle('is-filtered', filter !== 'all');
-  let count = 0;
-  for (const card of projectCards) {
-    card.hidden = filter !== 'all' && card.dataset.category !== filter;
-    if (!card.hidden) count += 1;
-  }
-  filterStatus.textContent = `${count} ${count === 1 ? 'project' : 'projects'} shown.`;
-});
-
 const navLinks = [...navigation.querySelectorAll('a')];
 if ('IntersectionObserver' in window) {
   const sectionObserver = new IntersectionObserver((entries) => {
